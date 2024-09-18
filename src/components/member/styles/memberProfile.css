@@ -1,0 +1,121 @@
+/* memberProfile.css */
+
+/* Container Styling */
+.member-profile {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .member-profile:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Heading */
+  .member-profile h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Form Styling */
+  .member-profile form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Label Styling */
+  .member-profile label {
+    font-size: 1rem;
+    color: #34495e;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .remove-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 10px;
+    background-color: #dc3545;
+  }
+  .remove-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Input Styling */
+  .member-profile input[type="text"] {
+    padding: 10px;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    background-color: #ecf0f1;
+    font-size: 1rem;
+    color: #2c3e50;
+    transition: border-color 0.3s ease;
+  }
+  
+  .member-profile input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #ffffff;
+  }
+  
+  /* Button Styling */
+  .member-profile button[type="submit"] {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .member-profile button[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Error Message */
+  .member-profile .error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .member-profile {
+      padding: 15px;
+      margin: 20px;
+    }
+  
+    .member-profile h3 {
+      font-size: 1.5rem;
+    }
+  
+    .member-profile form {
+      gap: 15px;
+    }
+  
+    .member-profile label {
+      font-size: 0.95rem;
+    }
+  
+    .member-profile button[type="submit"] {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }
+  

@@ -1,0 +1,89 @@
+/* registerMember.css */
+
+/* Form Container Styling */
+.register-member-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .register-member-form:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Input Fields Styling */
+  .register-member-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    color: #2c3e50;
+    transition: border-color 0.3s ease;
+  }
+  
+  .register-member-input:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+  
+  /* Placeholder Styling */
+  .register-member-input::placeholder {
+    color: #bdc3c7;
+  }
+  
+  /* Button Styling */
+  .register-member-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-member-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Error Message */
+  .register-member-error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+  }
+  /* info Message */
+  .register-member-error {
+    color: #2b362c;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .register-member-form {
+      padding: 20px;
+      margin: 20px;
+    }
+  
+    .register-member-input {
+      padding: 10px;
+    }
+  
+    .register-member-button {
+      padding: 10px;
+      font-size: 1rem;
+    }
+  }
+  

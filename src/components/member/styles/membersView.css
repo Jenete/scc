@@ -1,0 +1,62 @@
+/* membersView.css */
+
+/* Main Container */
+.members-view-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* View Tabs */
+.members-view-container  .view-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.members-view-container  .view-tab-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  cursor: pointer;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+.members-view-container  .view-tab-button.active {
+  color: #3498db;
+  font-weight: bold;
+  border-bottom: 2px solid #3498db;
+}
+
+.members-view-container  .view-tab-button:hover {
+  color: #2980b9;
+}
+
+/* View Content */
+.members-view-container  .view-content {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .members-view-container {
+    padding: 15px;
+  }
+
+  .members-view-container .view-tab-button {
+    font-size: 1rem;
+  }
+
+  .members-view-container .view-content {
+    padding: 15px;
+  }
+}

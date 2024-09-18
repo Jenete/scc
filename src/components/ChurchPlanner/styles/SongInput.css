@@ -1,0 +1,17 @@
+.songInputContainer {
+    margin-bottom: 10px;
+  }
+  
+  .songInputContainer input[type="text"], 
+  .songInputContainer textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .songInputContainer input[type="file"] {
+    margin-bottom: 10px;
+  }
+  

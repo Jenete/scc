@@ -1,0 +1,25 @@
+.announcementInputContainer {
+    margin-bottom: 10px;
+  }
+  
+  .announcementInputContainer input[type="text"], 
+  .announcementInputContainer input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .announcementInputContainer button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .announcementInputContainer button:hover {
+    background-color: #1e87e5;
+  }

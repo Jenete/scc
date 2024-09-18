@@ -1,0 +1,86 @@
+/* General Page Styles */
+.planner-listbody {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .planner-list h1 {
+    text-align: center;
+    color: #0056b3;
+    margin-top: 20px;
+    font-size: 2.5em;
+    font-weight: 600;
+  }
+  
+  .planner-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .planner-list .planner-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .planner-list .planner-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .planner-list h3 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+  
+  .planner-list h4 {
+    color: #0056b3;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .planner-list ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .planner-list li {
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 1.1em;
+    color: #333;
+    transition: background-color 0.2s;
+  }
+  
+  .planner-list li:hover {
+    background-color: #e0e7ef;
+  }
+  
+  /* Loader Styles */
+  .planner-list .loading {
+    font-size: 1.5em;
+    text-align: center;
+    color: #888;
+    margin-top: 50px;
+  }
+  
+  /* Error Message Styles */
+  .planner-list .error-message {
+    color: #ff4b5c;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 50px;
+  }
+  

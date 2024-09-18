@@ -1,0 +1,68 @@
+/* GoogleSearchPage.css */
+
+/* Styling for the component container */
+.google-search-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styling */
+  .google-search-page h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Styling for the search container */
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the input field */
+  .search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .search-input:focus {
+    border-color: #4285f4; /* Google Blue */
+    outline: none;
+  }
+  
+  /* Styling for the search button */
+  .search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4285f4; /* Google Blue */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button:hover {
+    background-color: #357ae8; /* Darker blue on hover */
+  }
+  
+  .search-button:active {
+    background-color: #2a5cbf; /* Even darker blue on active */
+  }
+  
+  /* Styling for the Google search iframe */
+  .google-search-iframe {
+    border: none;
+    border-radius: 10px;
+  }
+  

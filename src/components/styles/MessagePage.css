@@ -1,0 +1,52 @@
+/* MessagePage.css */
+
+.message-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.emoji {
+    font-size: 36px;
+}
+
+.message-text {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.confirmation-message {
+    background-color: #dff0d8; /* Bootstrap Success Green */
+    color: #3c763d; /* Bootstrap Success Text */
+}
+
+.success-message {
+    background-color: #d4edda; /* Bootstrap Info Aqua */
+    color: #155724; /* Bootstrap Info Text */
+}
+
+.error-message {
+    background-color: #f8d7da; /* Bootstrap Danger Red */
+    color: #721c24; /* Bootstrap Danger Text */
+}
+
+.loading-message {
+    background-color: #cce5ff; /* Bootstrap Warning Light Blue */
+    color: #004085; /* Bootstrap Warning Text */
+}
+
+.warning-message {
+    background-color: #fff3cd; /* Bootstrap Warning Yellow */
+    color: #856404; /* Bootstrap Warning Text */
+}
+
+.info-message {
+    background-color: #d1ecf1; /* Bootstrap Primary Light Blue */
+    color: #0c5460; /* Bootstrap Primary Text */
+}

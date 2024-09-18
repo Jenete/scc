@@ -1,0 +1,87 @@
+/* memberList.css */
+
+/* Container Styling */
+.member-list-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Search Input Styling */
+  .member-list-search-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .member-list-search-input:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+  
+  /* List Styling */
+  .member-list-ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .member-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Member Name and Phone Styling */
+  .member-list-name {
+    font-weight: bold;
+    color: #34495e;
+  }
+  
+  .member-list-phone {
+    color: #7f8c8d;
+  }
+  
+  /* Button Styling */
+  .member-list-view-profile-btn {
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .member-list-view-profile-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .member-list-container {
+      padding: 15px;
+    }
+  
+    .member-list-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .member-list-view-profile-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

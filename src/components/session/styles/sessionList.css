@@ -1,0 +1,59 @@
+.sessionListTableContainer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sessionListTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .sessionListError {
+    color: red;
+    margin-bottom: 20px;
+  }
+  
+  .sessionListSearchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .sessionListTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sessionListTable th, .sessionListTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .sessionListTable th {
+    background-color: #f4f4f4;
+  }
+  
+  .sessionListTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .sessionListButton {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sessionListButton:hover {
+    background-color: #0056b3;
+  }
+  

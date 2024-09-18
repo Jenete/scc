@@ -1,0 +1,41 @@
+/* genericViewToggler.css */
+.generic-view-toggler {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .generic-view-toggler  .view-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  
+  .generic-view-toggler  .view-tabs button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    cursor: pointer;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+    }
+  
+  .generic-view-toggler  .view-tabs button.active {
+    color: #3498db;
+    font-weight: bold;
+    border-bottom: 2px solid #3498db;
+    }
+  
+  .generic-view-toggler  .view-tabs button:hover {
+    color: #2980b9;
+  }
+  
+  .generic-view-toggler  .view-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
