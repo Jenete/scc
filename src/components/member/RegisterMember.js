@@ -7,7 +7,8 @@ const RegisterMember = () => {
     fullname: "",
     cellnumber: "",
     alternativenumber: "",
-    address: ""
+    address: "",
+    birthday: ""
   });
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -38,7 +39,7 @@ const RegisterMember = () => {
     }
   
     try {
-        setMessage('Loading...')
+        setMessage('Loading...');
       const newMember = await addMember(formData);
       console.log("New Member Registered:", newMember);
       setMessage(`New Member Registered: ${newMember?.fullname}`)
@@ -46,7 +47,8 @@ const RegisterMember = () => {
         fullname: "",
         cellnumber: "",
         alternativenumber: "",
-        address: ""
+        address: "",
+        birthday: "",
       })
       setError(null); // Clear any previous errors
     } catch (err) {
@@ -83,6 +85,13 @@ const RegisterMember = () => {
         name="address"
         type="address"
         placeholder="Address"
+        onChange={handleChange}
+      />
+      <input
+        className="register-member-input"
+        name="birthday"
+        type="date"
+        placeholder="Birthday"
         onChange={handleChange}
       />
       {error && <p className="register-member-error">{error}</p>}

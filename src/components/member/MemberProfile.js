@@ -5,6 +5,7 @@ import './styles/memberProfile.css';
 const MemberProfile = ({ member }) => {
   const [formData, setFormData] = useState(member);
   const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,8 +18,10 @@ const MemberProfile = ({ member }) => {
       const updatedMember = await updateMember(formData);
       console.log("Member Updated:", updatedMember);
       setError(null);
+      setMessage("Member Updated!");
     } catch (err) {
       setError(err.error);
+      setMessage(null);
     }
   };
 
@@ -29,7 +32,9 @@ const MemberProfile = ({ member }) => {
         fullname: "",
         cellnumber: "",
         alternativenumber: "",
-        address: ""
+        address: "",
+        birthday: "",
+        prayerHour: ""
       });
       setError("Removed member");
     } catch (err) {
@@ -77,6 +82,29 @@ const MemberProfile = ({ member }) => {
             onChange={handleInputChange}
           />
         </label>
+        <label>
+          Birthday:
+          <input
+            type="text"
+            name="birthday"
+            value={formData.birthday}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label className="prayer-hours-label"> 
+          Prayer hours:
+          <input
+            type="range"
+            name="prayerHours"
+            value={formData.prayerHour || 0} 
+            min={0}
+            max={100}
+            onChange={handleInputChange}
+            className="prayer-hours-range"
+          />
+          <span className="prayer-hours-value">{formData.prayerHour || 0}</span>
+        </label>
+        {message}
         {error && <p className="error">{error}</p>}
         <button type="submit" onClick={handleSubmit}>Update Member</button>
         <button onClick={() => handleRemove(member.id)} className="remove-button">Remove</button>

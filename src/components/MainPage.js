@@ -10,6 +10,7 @@ import ChurchPlanner from './ChurchPlanner/ChurchPlanner.js';
 import SessionTrackerView from './session/SessionTrackerView.js';
 import PlannerListPage from './ChurchPlanner/PlannerListPage.js';
 import FeatureReminder from './extra/FeatureReminder.js';
+import GoUpButton from './extra/GoUpButton.js';
 
 const MainPage = () => {
   const firestoreService = new FirestoreService('scc');
@@ -81,7 +82,7 @@ const MainPage = () => {
                 <button onClick={() => setTabName('members')}><i className="fa fa-users" aria-hidden="true"></i> Members</button>
                 <button onClick={() => setTabName('planner')}><i className="fa fa-calendar" aria-hidden="true"></i> Planner</button>
             </div>
-
+<GoUpButton/>
             {tabName === 'content' && <ContentViewer />}
             {tabName === 'members' && <MembersPage />}
             {tabName === 'planner' && <GenericViewToggler views={views} />}

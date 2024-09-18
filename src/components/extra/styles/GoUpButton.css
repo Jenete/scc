@@ -1,0 +1,33 @@
+/* src/styles/GoUpButton.css */
+
+.go-up-button {
+    position: fixed;
+    bottom: 60px; /* Distance from bottom */
+    right: 20px; /* Distance from right */
+    background-color: #3498db; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px; /* Size of the button */
+    height: 50px; /* Size of the button */
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px; /* Center text vertically */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000; /* Ensure it appears above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-up-button.visible {
+    opacity: 1; /* Show button */
+    visibility: visible; /* Ensure it's visible */
+}
+
+.go-up-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
