@@ -29,7 +29,7 @@ const MemberList = ({ onSelectMember }) => {
       <ul className="member-list-ul">
         {filteredMembers.map((member) => (
           <li className="member-list-item" key={member.id}>
-            <span className="member-list-name">{member.fullname}</span> {" "}
+            <span className="member-list-name"><i className="fa fa-user" aria-hidden="true"></i> {member.fullname}</span> {" "}
             <span className="member-list-phone"><a href={`tel:${member.cellnumber}`}>{member.cellnumber}</a></span>
             <button
               className="member-list-view-profile-btn"
