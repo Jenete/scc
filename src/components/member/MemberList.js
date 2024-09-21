@@ -9,7 +9,7 @@ const MemberList = ({ onSelectMember }) => {
   useEffect(() => {
     const fetchMembers = async () => {
       const data = await getAllMembers();
-      setMembers(data);
+      if(data)setMembers(data);
     };
     fetchMembers();
   }, []);

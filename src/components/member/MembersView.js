@@ -3,9 +3,10 @@ import MemberList from "./MemberList";
 import RegisterMember from "./RegisterMember";
 import MemberProfile from "./MemberProfile";
 import './styles/membersView.css';
+import InsightsView from "../insights/InsightsView";
 
 const MembersView = () => {
-  const [activeView, setActiveView] = useState("list"); // 'list', 'register', or 'profile'
+  const [activeView, setActiveView] = useState("insights"); // 'list', 'register', or 'profile'
   const [selectedMember, setSelectedMember] = useState(null); // For profile view
 
   // Handle switching views
@@ -20,6 +21,12 @@ const MembersView = () => {
     <div className="members-view-container">
       {/* Navigation Tabs */}
       <div className="view-tabs">
+        <button
+          className={`view-tab-button ${activeView === "insights" ? "active" : ""}`}
+          onClick={() => handleViewSwitch("insights")}
+        >
+          Insights
+        </button>
         <button
           className={`view-tab-button ${activeView === "list" ? "active" : ""}`}
           onClick={() => handleViewSwitch("list")}
@@ -40,6 +47,7 @@ const MembersView = () => {
           <MemberList onSelectMember={(member) => handleViewSwitch("profile", member)} />
         )}
         {activeView === "register" && <RegisterMember />}
+        {activeView === "insights" && <InsightsView />}
         {activeView === "profile" && selectedMember && (
           <MemberProfile member={selectedMember} />
         )}

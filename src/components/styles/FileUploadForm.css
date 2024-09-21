@@ -4,7 +4,7 @@
 .file-upload-form {
     max-width: 600px; /* Wider width */
     margin: 20px auto;
-    padding: 30px; /* More padding */
+    padding: 15px; /* More padding */
     background-color: #f2f2f2; /* Softer background */
     border: 1px solid #ccc; /* Lighter border */
     border-radius: 15px; /* More rounded corners */

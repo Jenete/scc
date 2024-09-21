@@ -1,0 +1,53 @@
+/* eventCalendar.css */
+.event-calendar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  
+  .event-day {
+    background-color: #6fa3ef;
+    color: white;
+    border-radius: 50%;
+  }
+  
+  .event-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-details ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .event-details li {
+    padding: 10px 0;
+  }
+  
+  .event-details li a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .event-details li a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .event-calendar-container {
+      width: 100%;
+      max-width: 280px;
+  }
+}

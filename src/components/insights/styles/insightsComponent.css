@@ -1,0 +1,170 @@
+/* Insights Container */
+.insights-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: #f9f9fb;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Title Styles */
+.insights-container  h2 {
+  color: #3f51b5;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+/* Insight Sections */
+.insights-container .insight-section {
+  margin: 15px 0;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.insights-container  .insight-section h3 {
+  display: flex;
+  align-items: center;
+  color: #333;
+  cursor: pointer;
+}
+
+.insights-container .insight-section h3 i {
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+
+.insights-container .insight-section details[open] h3 i {
+  transform: rotate(180deg);
+}
+
+/* List Styles */
+.insights-container .insight-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.insights-container .insight-section li {
+  padding: 5px 0;
+  color: #555;
+}
+
+/* Attendance Stat Bad Style */
+.insights-container .attendance-stat-bad {
+  color: #d32f2f; /* Red for low attendance */
+}
+
+/* Summary Section */
+.insights-container .summary {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .insights-container .insights-container {
+    padding: 5px;
+  }
+
+  .insights-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .insights-container .insight-section {
+    padding: 10px;
+  }
+
+  .insights-container .insight-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .insights-container .insight-section ul {
+    font-size: 0.9rem;
+  }
+}
+
+/* Session Topics Section Styles */
+.insights-container .session-topics-section {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  margin: 20px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.insights-container .session-topics-section li {
+  background-color: #f5f5f5; /* Light gray background for each session */
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 5px solid #007bff; /* Blue left border for emphasis */
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insights-container .session-topics-section li:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
+}
+
+.insights-container .session-topics-section li strong {
+  color: #333; /* Darker color for teacher's name */
+  font-weight: bold;
+}
+
+.insights-container .session-topics-section li::before {
+  content: "\f02d"; /* Font Awesome icon (e.g., book icon) */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 10px;
+  color: #007bff; /* Blue icon */
+}
+
+/* Nested list styles for members present */
+.insights-container .session-topics-section ol {
+  margin: 10px 0 0 20px;
+  padding-left: 0;
+}
+
+.insights-container .session-topics-section ol li {
+  color: #666; /* Gray text for members */
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.insights-container .session-topics-section ol li::before {
+  content: "\f007"; /* Font Awesome user icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 5px;
+  color: #28a745; /* Green icon for members */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .insights-container .session-topics-section li {
+    font-size: 0.9em;
+    padding: 5px;
+  }
+
+  .insights-container .session-topics-section ol li {
+    font-size: 0.85em;
+  }
+}
+
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .insights-container .insights-container .insights-container {
+      padding: 5px;
+    }
+  
+    .insights-container .insights-container .pill-item {
+      padding: 8px 15px;
+      font-size: 12px;
+    }
+  }
+  

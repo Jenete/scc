@@ -1,5 +1,5 @@
 .sessionTrackerContainer {
-  padding: 20px;
+  padding: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,6 +27,20 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+.sessionTracker-teacher-leader-combobox {
+  width: 100%; /* Full width */
+  padding: 0.5em; /* Spacing */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  transition: border-color 0.3s; /* Smooth transition */
+}
+
+.sessionTracker-teacher-leader-combobox:focus {
+  border-color: #007BFF; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
 
 .sessionTrackerTextarea {
   height: 100px;

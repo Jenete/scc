@@ -87,6 +87,7 @@ const RegisterMember = () => {
         placeholder="Address"
         onChange={handleChange}
       />
+      <label>Birthday:</label>
       <input
         className="register-member-input"
         name="birthday"

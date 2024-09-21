@@ -9,7 +9,21 @@ import {
   // Get all members
   export const getAllMembers = async () => {
     try {
-      const members = await dbgetAllMembers();
+      let members = await dbgetAllMembers();
+      members = members?.map(member => {
+        const formattedBirthday = member.birthday
+          ? new Date(member.birthday).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })
+          : 'No Birthday Provided';
+        
+        return {
+          ...member,
+          formattedBirthday
+        };
+      });
       return members;
     } catch (error) {
       console.error("Error fetching members:", error);

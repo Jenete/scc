@@ -34,7 +34,7 @@ const MemberProfile = ({ member }) => {
         alternativenumber: "",
         address: "",
         birthday: "",
-        prayerHour: ""
+        prayerHours: ""
       });
       setError("Removed member");
     } catch (err) {
@@ -85,8 +85,9 @@ const MemberProfile = ({ member }) => {
         <label>
           Birthday:
           <input
-            type="text"
+            type="date"
             name="birthday"
+            placeholder="YYYYMMDD"
             value={formData.birthday}
             onChange={handleInputChange}
           />
@@ -96,13 +97,13 @@ const MemberProfile = ({ member }) => {
           <input
             type="range"
             name="prayerHours"
-            value={formData.prayerHour || 0} 
+            value={formData.prayerHours} 
             min={0}
             max={100}
             onChange={handleInputChange}
             className="prayer-hours-range"
           />
-          <span className="prayer-hours-value">{formData.prayerHour || 0}</span>
+          <span className="prayer-hours-value">{formData.prayerHours||0}</span>
         </label>
         {message}
         {error && <p className="error">{error}</p>}

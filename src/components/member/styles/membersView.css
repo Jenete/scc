@@ -4,7 +4,7 @@
 .members-view-container {
   max-width: 900px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 5px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -40,7 +40,7 @@
 
 /* View Content */
 .members-view-container  .view-content {
-  padding: 20px;
+  padding: 5px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -49,7 +49,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .members-view-container {
-    padding: 15px;
+    padding: 5px;
   }
 
   .members-view-container .view-tab-button {
@@ -57,6 +57,6 @@
   }
 
   .members-view-container .view-content {
-    padding: 15px;
+    padding: 5px;
   }
 }

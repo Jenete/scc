@@ -1,0 +1,118 @@
+/* Welcome Page Container */
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Welcome Content Styles */
+.welcome-container .welcome-content {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+}
+
+/* Title Styles */
+.welcome-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+/* Feature Cards Container */
+.welcome-container .feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+/* Individual Feature Card Styles */
+.welcome-container .feature-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.5s, box-shadow 0.5s;
+  animation: slideIn 0.5s ease forwards, highlight 10s infinite;
+}
+
+/* Hover Effect */
+.welcome-container .feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for Cards */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Highlight Animation */
+@keyframes highlight {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+}
+
+/* Button Group Styles */
+.welcome-container .button-group {
+  margin-top: 20px;
+}
+
+/* Button Styles */
+.welcome-container .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.welcome-container .login-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.welcome-container .login-btn:hover {
+  background-color: #ffca28;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .welcome-container {
+    padding: 15px;
+    font-size: 13px;
+  }
+  .welcome-content{
+      margin-top: 2rem;
+  }
+
+  .welcome-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-container .feature-card {
+    padding: 10px;
+  }
+
+  .welcome-container .btn {
+    width: 100%;
+  }
+}

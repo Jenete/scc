@@ -108,6 +108,7 @@ const FileUploadForm = () => {
           <label>Upload File (MP3, PDF, etc.)</label>
           <input
             type="file"
+            accept=".pdf,image/*,audio/*"
             onChange={handleFileChange}
             className="file-input"
           />

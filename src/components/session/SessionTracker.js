@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getAllMembers } from '../../controllers/MemberControllerMock';
 import { getAllSessions, addSession, updateSession, removeSession } from '../../controllers/SessionTrackerController';
 import './styles/sessionTracker.css';
@@ -15,12 +15,13 @@ const SessionTracker = () => {
     membersPresent: []
   });
   const [error, setError] = useState('');
+  const detailsRef = useRef(null); // Create a reference to the details element
 
   useEffect(() => {
     const fetchSessions = async () => {
       try {
         const sessionsData = await getAllSessions();
-        setSessions(sessionsData);
+        if(sessionsData)setSessions(sessionsData);
       } catch (err) {
         setError(err.message);
       }
@@ -29,7 +30,7 @@ const SessionTracker = () => {
     const fetchMembers = async () => {
       try {
         const membersData = await getAllMembers();
-        setMembers(membersData);
+        if(membersData) setMembers(membersData);
       } catch (err) {
         setError(err.message);
       }
@@ -83,6 +84,7 @@ const SessionTracker = () => {
       teacher: session.teacher,
       membersPresent: session.membersPresent
     });
+    handleExpandDetails();
   };
 
   const handleDeleteSession = async (sessionId) => {
@@ -94,12 +96,22 @@ const SessionTracker = () => {
     }
   };
 
+  const handleExpandDetails = () => {
+    if (detailsRef.current) {
+      // Open the details element
+      detailsRef.current.open = true;
+      
+      // Scroll to the top of the details element
+      detailsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="sessionTrackerContainer">
       <h2 className="sessionTrackerTitle">Session Tracker</h2>
       {error && <p className="sessionTrackerError">{error}</p>}
-      <details>
-        <summary> Record new session</summary>
+      <details ref={detailsRef}>
+        <summary>  Record new session</summary>
         <article>
         <form onSubmit={handleSubmit} className="sessionTrackerForm">
         <label>
@@ -142,7 +154,7 @@ const SessionTracker = () => {
           />
         </label>
         <fieldset className="sessionTrackerMembersFieldset">
-          <legend>Members Present</legend>
+          <legend>Participants</legend>
           {members.map(member => (
             <label key={member.id} className="sessionTrackerMemberLabel">
               <input

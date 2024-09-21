@@ -4,7 +4,7 @@
 .member-list-container {
     max-width: 800px;
     margin: 30px auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #f1f1f1;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -13,7 +13,7 @@
   /* Search Input Styling */
   .member-list-search-input {
     width: 100%;
-    padding: 12px;
+    padding: 9px;
     margin-bottom: 15px;
     border-radius: 8px;
     border: 1px solid #ccc;
