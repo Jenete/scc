@@ -1,0 +1,43 @@
+/* outreachPage.css */
+.outreach-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .outreach-page-container .view-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .outreach-page-container .view-btn {
+    padding: 10px 20px;
+    background-color: #6200ee;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .outreach-page-container .view-btn.active {
+    background-color: #4500b5;
+  }
+  
+  .outreach-page-container .view-btn:hover {
+    background-color: #320089;
+  }
+  
+  @media (max-width: 768px) {
+    .outreach-page-container .view-switcher {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  

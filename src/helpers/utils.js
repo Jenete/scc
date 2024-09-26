@@ -19,6 +19,35 @@
 };
 
 /**
+ * Calculates and returns the age based on the provided date.
+ * @param {string | Date} date - The birthdate (in string or Date format).
+ * @returns {number} The calculated age.
+ */
+export const getAge = (date) => {
+    const birthDate = new Date(date); // Convert the input to a Date object
+    const today = new Date(); // Get the current date
+
+    let age = today.getFullYear() - birthDate.getFullYear(); // Calculate the year difference
+    const monthDifference = today.getMonth() - birthDate.getMonth(); // Get the month difference
+
+    // If the birth month hasn't occurred yet this year, or it's the birth month but the day hasn't passed
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--; // Adjust age if the birthday hasn't occurred yet
+    }
+
+    return age; // Return the calculated age
+};
+/**
+ * Returns a randomly generated ID.
+ * @returns {string} randomly generated ID.
+ */
+export const generateID = () => {
+    const id = Math.random().toString(36).substring(2,30);
+    return id; 
+};
+
+
+/**
  * Fallback method for copying text to the clipboard.
  * @param {string} text - The text to copy.
  */

@@ -3,7 +3,11 @@ import {
     dbaddMember,
     dbupdateMember,
     dbremoveMember,
-    dbgetMemberById
+    dbgetMemberById,
+    dbgetAllContacts,
+    dbaddContact,
+    dbupdateContact,
+    dbremoveContact
   } from "../services/MemberService";
   
   // Get all members
@@ -73,4 +77,50 @@ import {
       throw new Error("Error fetching member");
     }
   };
+
+
+  // CONTACTS (OUTREACH) SECTION
+
+// Get all contacts
+export const getAllContacts = async () => {
+  try {
+    let contacts = await dbgetAllContacts();
+    return contacts;
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+    throw new Error("Error fetching contacts");
+  }
+};
+
+// Add a new contact (outreach)
+export const addContact = async (newContact) => {
+  try {
+    const contact = await dbaddContact(newContact);
+    return contact;
+  } catch (error) {
+    console.error("Error adding contact:", error);
+    throw new Error("Error adding contact");
+  }
+};
+
+// Update an existing contact
+export const updateContact = async (updatedContact) => {
+  try {
+    const contact = await dbupdateContact(updatedContact);
+    return contact;
+  } catch (error) {
+    console.error("Error updating contact:", error);
+    throw new Error("Error updating contact");
+  }
+};
+
+// Remove a contact
+export const removeContact = async (contactId) => {
+  try {
+    await dbremoveContact(contactId);
+  } catch (error) {
+    console.error("Error removing contact:", error);
+    throw new Error("Error removing contact");
+  }
+};
   

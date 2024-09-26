@@ -11,3 +11,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+/* Mobile-friendly responsiveness */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    overflow: scroll;
+    font-size: 12px;
+  }
+}

@@ -9,6 +9,7 @@ import FeatureReminder from './extra/FeatureReminder.js';
 import GoUpButton from './extra/GoUpButton.js';
 import EventCalendar from './calendar/EventCalendar.js';
 import SundayService from './session/SundayService.js';
+import OutreachPage from './outreach/OutreachPage.js';
 
 const MainPage = () => {
   const [tabName, setTabName] = useState('members');
@@ -63,6 +64,10 @@ const MainPage = () => {
 
       <div className="main-page-section event-calendar-section">
         <EventCalendar />
+      </div>
+
+      <div className="main-page-section">
+        <OutreachPage/>
       </div>
 
       {(!searchResults || searchResults.length === 0) && (

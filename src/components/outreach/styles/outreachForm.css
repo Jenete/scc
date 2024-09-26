@@ -1,0 +1,107 @@
+/* outreachForm.css */
+.outreach-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .outreach-form-container .outreach-form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .outreach-form-container .outreach-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .outreach-form-container .outreach-form-group label {
+    font-weight: bold;
+  }
+  
+  .outreach-form-container .outreach-form-group input,
+  .outreach-form-container .outreach-form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .outreach-form-container .outreach-form-submit {
+    padding: 12px;
+    background-color: #6200ee;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .outreach-form-container .outreach-form-submit:hover {
+    background-color: #4500b5;
+  }
+  
+  /* outreachDashboard.css */
+  .outreach-form-container .outreach-dashboard-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .outreach-form-container .outreach-dashboard-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .outreach-form-container .outreach-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .outreach-form-container .outreach-contact-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .outreach-form-container .outreach-contact-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .outreach-form-container .contact-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .outreach-form-container .status-btn {
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #6200ee;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+  }
+  
+  .outreach-form-container .status-btn:hover {
+    background-color: #4500b5;
+  }
+  
+  /* outreachPage.css */
+  .outreach-form-container .outreach-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  

@@ -6,6 +6,7 @@ import './styles/eventCalendar.css'; // Custom styles
 import { getAllSessions} from '../../controllers/SessionTrackerController';
 import { getAllMembers } from '../../controllers/MemberControllerMock';
 import { Link } from 'react-router-dom';
+import { getAge } from '../../helpers/utils';
 
 const EventCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -79,6 +80,16 @@ const EventCalendar = () => {
     return [...sessionEvents, ...birthdayEvents];
   };
 
+
+  const calculateAge = (birthday) =>{
+    try {
+      const age = getAge(birthday);
+      return age;
+    } catch (error) {
+      console.error(error);
+      return birthday;
+    }
+  }
   return (
     <div className="event-calendar-container">
       <h2>Event/Session Calendar</h2>
@@ -102,7 +113,7 @@ const EventCalendar = () => {
                   </span>
                 ) : (
                   <span>
-                    {event.fullname? <div><i className="fa fa-birthday-cake" aria-hidden="true"></i> Birthday: <strong>{event.fullname}</strong> ({event.birthday})</div>: <strong>{event.details}</strong>}
+                    {event.fullname? <div><i className="fa fa-birthday-cake" aria-hidden="true"></i> Birthday: <strong>{event.fullname}</strong> ({calculateAge(event.birthday)} years)</div>: <strong>{event.details}</strong>}
                   </span>
                 )}
               </li>
