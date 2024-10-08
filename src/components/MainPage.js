@@ -57,11 +57,14 @@ const MainPage = () => {
 
   return (
     <div className="main-page">
-      <header className="main-header">
-        <h1 className="app-title">SCC</h1>
+      <Layout/>
+      {/*<header className="main-header">
+
+      
+         <h1 className="app-title">SCC</h1>
 
         {/* Mobile-friendly search bar */}
-        <div className="search-container">
+        {/* <div className="search-container">
           <input
             className="search-input"
             placeholder="Quick search..."
@@ -75,18 +78,18 @@ const MainPage = () => {
             Search
           </button>
         </div>
-      </header>
+      </header> */} 
 
-      {/* Feature Reminder moved to a collapsible section */}
-      <FeatureReminder />
+      {/* Feature Reminder moved to a collapsible section
+      <FeatureReminder /> */}
 
       
-      {/* Render Search Results */}
+      {/* Render Search Results
       {searchResults.length > 0 && (
         <div className="search-results-section">
           <SearchResults results={searchResults} closeResults={closeResults} />
         </div>
-      )}
+      )} */}
 
       {/* Calendar section (mobile-friendly) */}
       <div className="main-page-section">
@@ -107,7 +110,7 @@ const MainPage = () => {
             <i className="fa fa-calendar" aria-hidden="true"></i> Sessions
           </button>
         </nav>
-<Layout/>
+
         {/* Tab Content */}
         <div className="content-section">
           {tabName === 'content' && <ContentViewer />}

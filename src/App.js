@@ -7,6 +7,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import RegisterMember from './components/member/RegisterMember';
 import WelcomePage from './components/main/WelcomePage';
 import SessionDetails from './components/session/SessionDetails';
+import Layout from './components/main/Layout';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
           <Route path="/session/:id" element={<SessionDetails />} />
           <Route path="/mainpage" element={
             <ProtectedRoute>
-              <MainPage />
+              <Layout />
             </ProtectedRoute>
           } />
         </Routes>

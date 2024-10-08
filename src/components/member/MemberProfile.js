@@ -46,7 +46,6 @@ const MemberProfile = ({ member, adminView }) => {
 
   return (
     <div className="member-profile">
-      <h3>Profile of {member.fullname}</h3>
       
       {member&& !toggledEdit&& <UserSummary member={member}/>}
       <button className="upload-button" onClick={()=> setToggledEdit(prev=> !prev)}>{toggledEdit?'Done':`Edit`}</button>
@@ -108,7 +107,8 @@ const MemberProfile = ({ member, adminView }) => {
             name="prayerHours"
             value={formData.prayerHours} 
             min={0}
-            max={100}
+            max={45}
+            step={0.5}
             onChange={handleInputChange}
             className="prayer-hours-range"
           />
