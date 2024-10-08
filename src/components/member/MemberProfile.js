@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { updateMember, removeMember } from "../../controllers/MemberControllerMock";
 import './styles/memberProfile.css'; 
+import UserSummary from "../user/UserSummary";
 
-const MemberProfile = ({ member }) => {
+const MemberProfile = ({ member, adminView }) => {
   const [formData, setFormData] = useState(member);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
+  const [toggledEdit, setToggledEdit] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,10 +47,14 @@ const MemberProfile = ({ member }) => {
   return (
     <div className="member-profile">
       <h3>Profile of {member.fullname}</h3>
-      <form onSubmit={(e)=>e.preventDefault()}>
+      
+      {member&& !toggledEdit&& <UserSummary member={member}/>}
+      <button className="upload-button" onClick={()=> setToggledEdit(prev=> !prev)}>{toggledEdit?'Done':`Edit`}</button>
+      {toggledEdit && <form onSubmit={(e)=>e.preventDefault()}>
         <label>
           Full Name:
           <input
+          readOnly={!adminView}
             type="text"
             name="fullname"
             value={formData.fullname}
@@ -58,6 +64,7 @@ const MemberProfile = ({ member }) => {
         <label>
           Cell Number:
           <input
+          readOnly={!adminView}
             type="text"
             name="cellnumber"
             value={formData.cellnumber}
@@ -67,6 +74,7 @@ const MemberProfile = ({ member }) => {
         <label>
           Alternative Number:
           <input
+          readOnly={!adminView}
             type="text"
             name="alternativenumber"
             value={formData.alternativenumber}
@@ -76,6 +84,7 @@ const MemberProfile = ({ member }) => {
         <label>
           Address:
           <input
+          readOnly={!adminView}
             type="text"
             name="address"
             value={formData.address}
@@ -108,8 +117,8 @@ const MemberProfile = ({ member }) => {
         {message}
         {error && <p className="error">{error}</p>}
         <button type="submit" onClick={handleSubmit}>Update Member</button>
-        <button onClick={() => handleRemove(member.id)} className="remove-button">Remove</button>
-      </form>
+        {adminView && <button onClick={() => handleRemove(member.id)} className="remove-button">Remove</button>}
+      </form>}
     </div>
   );
 };

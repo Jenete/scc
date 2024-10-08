@@ -1,0 +1,125 @@
+/* General container styles */
+.audio-zip-container {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .audio-zip-container {
+    max-width: 400px;
+  }
+}
+
+/* Title */
+.audio-zip-container .audio-zip-title {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* List styling */
+.audio-zip-container .audio-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.audio-zip-container .audio-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.audio-zip-container .audio-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Audio title */
+.audio-zip-container .audio-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #374151;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Audio URL */
+.audio-zip-container .audio-url {
+  font-size: 0.9rem;
+  color: #6b7280;
+  flex: 2;
+  margin-left: 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Remove button */
+.audio-zip-container .remove-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.audio-zip-container .remove-button:hover {
+  background-color: #dc2626;
+}
+
+.audio-zip-container .remove-button i {
+  font-size: 1rem;
+}
+
+/* Status feedback */
+.audio-zip-container .status-feedback {
+  font-size: 1rem;
+  color: #10b981;
+  text-align: center;
+  margin: 15px 0;
+  font-weight: 500;
+}
+
+/* Download button */
+.audio-zip-container .download-button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.audio-zip-container .download-button:hover {
+  background-color: #2563eb;
+}
+
+.audio-zip-container .download-button i {
+  margin-right: 8px;
+}

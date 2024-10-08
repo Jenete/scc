@@ -1,7 +1,7 @@
 // FirebaseConfig.js
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, updateDoc, setDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
-import { getStorage,uploadBytes, getDownloadURL, ref as storageRef } from 'firebase/storage';
+import { getStorage,uploadBytes, getDownloadURL, ref as storageRef, listAll } from 'firebase/storage';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAWW2cidrB2D2EUZH4QElSzD_Kt7xDywDk",
@@ -208,6 +208,84 @@ class FirestoreService {
       return { success: false, message: 'Error updating document' };
     }
   }
+    /**
+   * Update a document in the Firestore collection.
+   * @param {string} docId - The ID of the document to update.
+   * @param {object} data - The data to update in the document.
+   * @returns {Promise<{ success: boolean, message: string }>}
+   */
+  async getDownloadURLDB(folder, fileName) {
+    try {
+
+      const url = await getDownloadURL(storageRef(storage, `${folder}/${fileName}`));
+      // `url` is the download URL for 'images/stars.jpg'
+
+      // This can be downloaded directly:
+      // const xhr = new XMLHttpRequest();
+      // xhr.responseType = 'blob';
+      // xhr.onload = (event) => {
+      //   const blob = xhr.response;
+      // };
+      // xhr.open('GET', url);
+      // xhr.send();
+
+      // // Or inserted into an <img> element
+      // const img = document.getElementById('myimg');
+      // img.setAttribute('src', url)
+      return url;
+    } catch (error) {
+      console.error('Error updating document:', error);
+      return { success: false, message: 'Error updating document' };
+    }
+  }
+  async getDownloadURLDB(urlX) {
+    try {
+
+      const url = await getDownloadURL(urlX);
+      // `url` is the download URL for 'images/stars.jpg'
+
+      // This can be downloaded directly:
+      // const xhr = new XMLHttpRequest();
+      // xhr.responseType = 'blob';
+      // xhr.onload = (event) => {
+      //   const blob = xhr.response;
+      // };
+      // xhr.open('GET', url);
+      // xhr.send();
+
+      // // Or inserted into an <img> element
+      // const img = document.getElementById('myimg');
+      // img.setAttribute('src', url)
+      return url;
+    } catch (error) {
+      console.error('Error updating document:', error);
+      return { success: false, message: 'Error updating document' };
+    }
+  }
+
+  async getFiles() {
+      const listRef = storageRef(storage, 'songs');
+      const files = [];
+
+      // Find all the prefixes and items.
+      const res = await listAll(listRef);
+
+      // Retrieve download URLs for all items in parallel.
+      const downloadPromises = res.items.map(async (itemRef) => {
+          const downloadURL = await getDownloadURL(itemRef);
+          return { name: itemRef.name, href: downloadURL };
+      });
+
+      // Wait for all download promises to resolve.
+      const fileData = await Promise.all(downloadPromises);
+
+      // Push the resolved data to the files array.
+      files.push(...fileData);
+
+      return files;
+  }
+
+  
   }
   
   export default FirestoreService;

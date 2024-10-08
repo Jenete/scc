@@ -50,6 +50,16 @@ import {
   export const updateMember = async (updatedMember) => {
     try {
       const member = await dbupdateMember(updatedMember);
+      const sessionMember = sessionStorage.getItem('sccuser');
+
+      if (sessionMember) {
+        const parsedSessionMember = JSON.parse(sessionMember);
+        
+        // Check if the session member exists and if the IDs match
+        if (parsedSessionMember?.id === member.id) {
+          sessionStorage.setItem('sccuser', JSON.stringify(member));
+        }
+      }
       return member;
     } catch (error) {
       console.error("Error updating member:", error);

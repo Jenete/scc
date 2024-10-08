@@ -1,43 +1,71 @@
-/* outreachPage.css */
+/* Outreach Page Styles */
 .outreach-page-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.outreach-page-container  .page-title {
+  text-align: center;
+  font-size: 32px;
+  color: #6200ee;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* View Switcher Styles */
+.outreach-page-container  .view-switcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.outreach-page-container  .view-btn {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 25px;
+  background-color: #6200ee;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.outreach-page-container  .view-btn:hover {
+  background-color: #4500b5;
+  transform: translateY(-2px);
+}
+
+.outreach-page-container  .view-btn.active {
+  background-color: #4500b5;
+}
+
+/* Status Message Styles */
+.outreach-page-container  .status-message {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .outreach-page-container  .page-title {
+      font-size: 28px;
   }
-  
-  .outreach-page-container .view-switcher {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+
+  .outreach-page-container  .view-btn {
+      padding: 8px 16px;
+      font-size: 14px;
   }
-  
-  .outreach-page-container .view-btn {
-    padding: 10px 20px;
-    background-color: #6200ee;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out;
+
+  .outreach-page-container  .status-message {
+      font-size: 12px;
   }
-  
-  .outreach-page-container .view-btn.active {
-    background-color: #4500b5;
-  }
-  
-  .outreach-page-container .view-btn:hover {
-    background-color: #320089;
-  }
-  
-  @media (max-width: 768px) {
-    .outreach-page-container .view-switcher {
-      flex-direction: column;
-      gap: 5px;
-    }
-  }
+}
+
   

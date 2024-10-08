@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import FirestoreService from '../services/FirebaseConfig.js';
 import './styles/ContentViewer.css';
-import MessagePage from './MessagePage'
+import MessagePage from './MessagePage';
 import FileUploadForm from './FileUploadForm.js';
+import SongList from './songs/SongList';
 
 const ContentViewer = () => {
   const [songs, setSongs] = useState([]);
@@ -12,21 +13,16 @@ const ContentViewer = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState('');
   const [messageType, setMessageType] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
-    // Function to handle some action that triggers the message display
   const handleAction = (message, messageType, seconds) => {
-        // Set the message text and type based on your logic
-        setMessageText(message);
-        setMessageType(messageType); // For example, setting it to SUCCESS
-        
-        // Show the message
-        setShowMessage(true);
-
-        // Optionally, hide the message after some time
-        setTimeout(() => {
-            setShowMessage(false);
-        }, seconds || 3000); // Hide after 5 seconds (adjust as needed)
-    };
+    setMessageText(message);
+    setMessageType(messageType);
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, seconds || 3000);
+  };
 
   const firestoreService = new FirestoreService('scc');
 
@@ -35,12 +31,7 @@ const ContentViewer = () => {
       try {
         if (fileToLoad === 'songs') {
           const fetchedSongs = await firestoreService.getAll('songs');
-          setSongs(
-            fetchedSongs?.map((song, index) => ({
-              ...song,
-              position: index,
-            }))
-          );
+          setSongs(fetchedSongs?.map((song, index) => ({ ...song, position: index })));
         } else if (fileToLoad === 'documents') {
           const fetchedDocuments = await firestoreService.getAll('documents');
           setDocuments(fetchedDocuments);
@@ -65,10 +56,9 @@ const ContentViewer = () => {
 
   const handleSave = async (song, index) => {
     const updatedSong = { ...song, position: index };
-    //console.log("Updating song "+ JSON.stringify(updatedSong));
     handleAction("Updating song details", 3);
     await firestoreService.update(song.id, updatedSong);
-    handleAction("Updated song details successfully", 1,5000);
+    handleAction("Updated song details successfully", 1, 5000);
   };
 
   const handleCopyToClipboard = (text) => {
@@ -81,58 +71,47 @@ const ContentViewer = () => {
     switch (fileToLoad) {
       case 'songs':
         return (
-          <ul className="all-songs-displayer">
-            {songs.map((song, index) => (
-              <li key={song.id} className="song-displayer">
-                <h2>{`${index+1}. `} {song.title}</h2>
-                <audio controls src={song.audioUrl}></audio>
-                <textarea onChange={(e)=>{
-                    songs[index] = {...songs[index],lyrics: e.target.value};
-                    song = {...songs[index]};
-                    console.log(songs[index]);
-                }}>{song?.lyrics?.substring(0, 80)}</textarea>
-                <div className='action-buttons'>
-                    <button onClick={() => handlePromote(index)}>⬆️ Promote</button>
-                    <button onClick={() => handleSave(song, index)}>Save</button>
-                    <button onClick={() => handleCopyToClipboard(song.lyrics)}>Copy Lyrics</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="all-songs-displayer">
+            <input 
+                type="text" 
+                placeholder="Search songs..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+            <SongList songs={songs} searchTerm={searchTerm} handleAction={handleAction} />
+          </div>
         );
       case 'documents':
         return (
           <ul>
             {documents.map((document, index) => (
               <li key={document.id}>
-                
                 <a href={document.fileUrl} target="_blank" rel="noopener noreferrer">
-                <strong>{`${index+1}. `} {document.title}</strong>
+                  <strong>{`${index + 1}. `} {document.title}</strong>
                 </a>
                 <iframe
-                    className="item-preview-iframe"
-                    width="200px"
-                    height="200px"
-                    src={document.fileUrl}
-                    title="item-preview-iframe"
-                    frameBorder="0"
-                    allowFullScreen
-                    ></iframe>
-                    <a href={document.fileUrl} target="_blank" rel="noopener noreferrer">
-                    📩 Open
+                  className="item-preview-iframe"
+                  width="200px"
+                  height="200px"
+                  src={document.fileUrl}
+                  title="item-preview-iframe"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+                <a href={document.fileUrl} target="_blank" rel="noopener noreferrer">
+                  📩 Open
                 </a>
-                    
               </li>
-              
             ))}
           </ul>
         );
       case 'links':
         return (
           <ul>
-            {links.map((link,index) => (
+            {links.map((link, index) => (
               <li key={link.id}>
-                <strong>{`${index+1}. `} {link.title}</strong>
+                <strong>{`${index + 1}. `} {link.title}</strong>
                 <a href={link.url} target="_blank" rel="noopener noreferrer">
                   Open Link
                 </a>
@@ -150,10 +129,10 @@ const ContentViewer = () => {
       <details>
         <summary><i className="fa fa-upload" aria-hidden="true"></i> Upload new files</summary>
         <article>
-          <FileUploadForm/>
+          <FileUploadForm />
         </article>
       </details>
-      <hr></hr>
+      <hr />
       <div className="tab-bar">
         <span
           onClick={() => setFileToLoad('documents')}

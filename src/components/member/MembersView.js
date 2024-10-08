@@ -8,6 +8,7 @@ import InsightsView from "../insights/InsightsView";
 const MembersView = () => {
   const [activeView, setActiveView] = useState("insights"); // 'list', 'register', or 'profile'
   const [selectedMember, setSelectedMember] = useState(null); // For profile view
+  const role = 'admin';
 
   // Handle switching views
   const handleViewSwitch = (view, member = null) => {
@@ -49,7 +50,7 @@ const MembersView = () => {
         {activeView === "register" && <RegisterMember />}
         {activeView === "insights" && <InsightsView />}
         {activeView === "profile" && selectedMember && (
-          <MemberProfile member={selectedMember} />
+          <MemberProfile member={selectedMember} adminView={true} />
         )}
       </div>
     </div>

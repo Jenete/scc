@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FirestoreService from '../services/FirebaseConfig.js';
 import './styles/FileUploadForm.css';
 import MessagePage from './MessagePage.js';
+import ResultsContainer from './ChurchPlanner/ResultsContainer.js';
 
 const FileUploadForm = () => {
   const [title, setTitle] = useState('');
@@ -18,35 +19,29 @@ const FileUploadForm = () => {
   const [messageText, setMessageText] = useState('');
   const [messageType, setMessageType] = useState(0);
 
-    // Function to handle some action that triggers the message display
+  const handleFileChange = (e) => setFile(e.target.files[0]);
+
   const handleAction = (message, messageType, seconds) => {
-        // Set the message text and type based on your logic
-        setMessageText(message);
-        setMessageType(messageType); // For example, setting it to SUCCESS
-        
-        // Show the message
-        setShowMessage(true);
-
-        // Optionally, hide the message after some time
-        setTimeout(() => {
-            setShowMessage(false);
-        }, seconds || 3000); // Hide after 5 seconds (adjust as needed)
-    };
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setMessageText(message);
+    setMessageType(messageType);
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, seconds || 3000);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    
+
     if (!title.trim()) {
       setError('Title is required');
       return;
     }
+
     setMessage('Uploading 20%');
-    handleAction("Uploading...", 3,3000);
+    handleAction("Uploading...", 3, 3000);
+
     try {
       if (file) {
         if (uploadType === uploadTypes.SONG) {
@@ -60,29 +55,34 @@ const FileUploadForm = () => {
         await firestoreService.addLink(title, link);
       } else {
         setError('Please upload a file or enter a link');
-        handleAction("Please upload a file or enter a link", 2,3000);
+        handleAction("Please upload a file or enter a link", 2, 3000);
         setMessage('');
         return;
       }
+
       setMessage('Uploading 100%');
-      setTitle('');
-      setLyrics('');
-      setFile(null);
-      setLink('');
-      handleAction("Uploaded successfully!", 1,5000);
-      setMessage('Uploaded successfully!');
+      resetForm();
+      handleAction("Uploaded successfully!", 1, 5000);
     } catch (error) {
-      handleAction("An error occurred during upload", 2,5000);
+      handleAction("An error occurred during upload", 2, 5000);
       setError('An error occurred during upload');
       console.error('Upload error:', error);
     }
+  };
+
+  const resetForm = () => {
+    setTitle('');
+    setLyrics('');
+    setFile(null);
+    setLink('');
   };
 
   return (
     <div className="file-upload-form">
       <h3>Upload Content</h3>
       {showMessage && <MessagePage messageText={messageText} messageType={messageType} />}
-      <p className='upload-type-form'>
+      
+      <p className="upload-type-form">
         What are we uploading today:
         <select
           onChange={(e) => setUploadType(e.target.value)}
@@ -93,6 +93,7 @@ const FileUploadForm = () => {
           <option value={uploadTypes.DOCX}>Documents</option>
         </select>
       </p>
+
       <div className="form-group">
         <label>Title</label>
         <input
@@ -102,7 +103,9 @@ const FileUploadForm = () => {
           required
           className="text-input"
         />
+      {title?.length> 3 && <ResultsContainer filename={title}/>}
       </div>
+
       {uploadType !== uploadTypes.LINK && (
         <div className="form-group">
           <label>Upload File (MP3, PDF, etc.)</label>
@@ -114,6 +117,7 @@ const FileUploadForm = () => {
           />
         </div>
       )}
+
       {uploadType === uploadTypes.SONG && (
         <div className="form-group">
           <label>Lyrics (for songs)</label>
@@ -124,6 +128,7 @@ const FileUploadForm = () => {
           ></textarea>
         </div>
       )}
+
       {uploadType === uploadTypes.LINK && (
         <div className="form-group">
           <label>Or Enter a Link</label>
@@ -135,12 +140,15 @@ const FileUploadForm = () => {
           />
         </div>
       )}
+
       {message && <div className="status-message">{message}</div>}
       {error && <div className="error-message">{error}</div>}
-      <button type="submit" className="upload-button" onClick={handleSubmit}>Upload</button>
+
+      <button type="submit" className="upload-button" onClick={handleSubmit}>
+        Upload
+      </button>
     </div>
   );
 };
 
 export default FileUploadForm;
-

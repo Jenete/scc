@@ -12,6 +12,29 @@
   color: white;
 }
 
+/* Default styling */
+.date-status-highlight {
+  padding: 10px;
+  border-right-width: 5px;
+  border-right-style: solid;
+}
+
+/* Red border for past dates */
+.date-status-highlight-past {
+  border-right-color: red;
+}
+
+/* Orange border for today's date */
+.date-status-highlight-present {
+  border-right-color: orange;
+}
+
+/* Green border for future dates */
+.date-status-highlight-future {
+  border-right-color: green;
+}
+
+
 /* Mobile-friendly responsiveness */
 @media (max-width: 768px) {
   table {

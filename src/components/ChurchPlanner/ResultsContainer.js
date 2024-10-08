@@ -40,7 +40,7 @@ const ResultsContainer = ({ filename, view }) => {
       {status === 'loading' && <p className="status-message">Searching...</p>}
       {status === 'found' && (
         <div className="result-status">
-          <i className="fa fa-check-circle success-icon" aria-hidden="true"></i> Found! Skip lyrics and file
+          <i className="fa fa-check-circle success-icon" aria-hidden="true"></i> Found! Don't upload
         </div>
       )}
       {status === 'similar' && (

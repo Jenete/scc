@@ -1,0 +1,11 @@
+[
+  {
+    "origin": ["http://localhost:3000"],
+    "method": ["GET", "POST", "PUT"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": ["Content-Type", "Authorization"]
+  }
+]
+
+
+// #run command: gsutil cors set cors.json gs://uhalisi-6d171.appspot.com

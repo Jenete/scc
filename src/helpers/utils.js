@@ -1,3 +1,6 @@
+import JSZip from 'jszip';
+import FileSaver from 'file-saver';
+
 //utils
 /**
  * Copies the provided text to the clipboard.
@@ -46,7 +49,41 @@ export const generateID = () => {
     return id; 
 };
 
+/**
+ * Checks if a user has permission based on a list of users.
+ * @param {Object|string} user - The user (object or ID) to check.
+ * @param {Array} users - The list of users to check in.
+ * @returns {boolean} True if the user has permissions, false otherwise.
+ */
+export const hasPermissionHelper = (user, users = []) => {
+    if (!user) return false;
+    
+    return users.some(({ id }) => id === (user.id || user));
+};
 
+/**
+ * Checks if the provided date is in the future or today.
+ * use class to highlight className={`date-status-highlight date-status-highlight-${checkDateStatus(event.date)}`}
+ * @param {string | Date} date - The date to check.
+ * @returns {string} - 'future' if the date is in the future, 'present' if it's today, and 'past' if the date is in the past.
+ */
+export const checkDateStatus = (date) => {
+    const today = new Date();
+    const givenDate = new Date(date);
+  
+    // Remove the time part of the dates for comparison (only consider the date).
+    today.setHours(0, 0, 0, 0);
+    givenDate.setHours(0, 0, 0, 0);
+  
+    if (givenDate > today) {
+      return 'future';
+    } else if (givenDate.getTime() === today.getTime()) {
+      return 'present';
+    } else {
+      return 'past';
+    }
+  };
+  
 /**
  * Fallback method for copying text to the clipboard.
  * @param {string} text - The text to copy.
@@ -73,3 +110,48 @@ const fallbackCopyText = (text) => {
         document.body.removeChild(textArea);
     }
 };
+
+
+
+export const generateAudioZip = async (audioUrls, audioTitles) => {
+  const zip = new JSZip();
+
+  // Fetch each audio file and add it to the ZIP
+  for (let i = 0; i < audioUrls.length; i++) {
+    const url = audioUrls[i];
+    const title = audioTitles[i];
+
+    try {
+      // Fetch the audio file
+      const response = await fetch(url);
+      const audioBlob = await response.blob();
+
+      // Add the audio file to the ZIP
+      zip.file(`${title}.mp3`, audioBlob); // Assuming the audio files are in mp3 format
+    } catch (error) {
+      console.error(`Error fetching audio file from ${url}:`, error);
+    }
+  }
+
+  // Generate the ZIP file
+  const content = await zip.generateAsync({ type: 'blob' });
+
+  // Save the ZIP file
+  FileSaver.saveAs(content, 'audio-files.zip');
+};
+
+// // Usage example
+// const audioUrls = [
+//   'https://example.com/audio1.mp3',
+//   'https://example.com/audio2.mp3',
+//   // add more URLs as needed
+// ];
+
+// const audioTitles = [
+//   'Audio Title 1',
+//   'Audio Title 2',
+//   // add corresponding titles as needed
+// ];
+
+// // Call the function
+// generateAudioZip(audioUrls, audioTitles);

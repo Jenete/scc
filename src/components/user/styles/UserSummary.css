@@ -1,0 +1,76 @@
+/* UserSummary.css */
+
+.user-summary__container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-summary__title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .user-summary__stats-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-summary__stat,
+  .user-summary__session {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .user-summary__stat--bad {
+    color: #e74c3c; /* Red for poor attendance */
+  }
+  
+  .user-summary__stat strong {
+    color: #2c3e50;
+  }
+  
+  .user-summary__session {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .user-summary__sessions-header {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #2980b9;
+    text-align: left;
+  }
+  
+  .user-summary__error {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .user-summary__title {
+      font-size: 1.5rem;
+    }
+  
+    .user-summary__stat, 
+    .user-summary__session {
+      font-size: 1rem;
+    }
+  
+    .user-summary__container {
+      padding: 15px;
+    }
+  }
+  

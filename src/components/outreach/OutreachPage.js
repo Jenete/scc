@@ -33,7 +33,7 @@ const OutreachPage = () => {
 
   const handleAddContact = async (newContact) => {
     try {
-    setStatusMessage("Loading...");
+      setStatusMessage("Loading...");
       const addedContact = await addContact({ ...newContact, id: generateID() });
       setContacts([...contacts, addedContact]);
       setStatusMessage("Contact added successfully!");
@@ -53,7 +53,7 @@ const OutreachPage = () => {
 
   const removeContact = async (contactId) => {
     try {
-        setStatusMessage("Loading...");
+      setStatusMessage("Loading...");
       await removeContactController(contactId);
       setContacts(contacts.filter(c => c.id !== contactId));
       setStatusMessage("Contact removed successfully!");
@@ -65,6 +65,7 @@ const OutreachPage = () => {
 
   return (
     <div className="outreach-page-container">
+      <h1 className="page-title">Outreach Management</h1>
       <div className="view-switcher">
         <button
           className={`view-btn ${view === 'dashboard' ? 'active' : ''}`}

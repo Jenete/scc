@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import ContentViewer from './ContentViewer';
+import FirestoreService from '../services/FirebaseConfig.js';
 import './styles/MainPage.css';
 import SearchResults from './SearchResults.js';
 import MembersPage from './MembersPage.js';
@@ -10,11 +11,15 @@ import GoUpButton from './extra/GoUpButton.js';
 import EventCalendar from './calendar/EventCalendar.js';
 import SundayService from './session/SundayService.js';
 import OutreachPage from './outreach/OutreachPage.js';
+import MemberProfile from './member/MemberProfile.js';
+import Layout from './main/Layout.js';
 
 const MainPage = () => {
+  const firestoreService = new FirestoreService('scc');
   const [tabName, setTabName] = useState('members');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const user = JSON.parse(sessionStorage.getItem('sccuser'));
 
   const views = [
     { key: 'list', label: 'Track Session', component: <SessionTrackerView /> },
@@ -22,7 +27,28 @@ const MainPage = () => {
   ];
 
   const handleSearch = async (query) => {
-    // Fetching logic remains unchanged
+    try {
+      // Fetch all content to filter by search query
+      const [fetchedSongs, fetchedDocuments, fetchedLinks] = await Promise.all([
+        firestoreService.getAll('songs'),
+        firestoreService.getAll('documents'),
+        firestoreService.getAll('links'),
+      ]);
+
+      const filteredSongs = fetchedSongs.filter((song) =>
+        song.title.toLowerCase().includes(query.toLowerCase())
+      );
+      const filteredDocuments = fetchedDocuments.filter((document) =>
+        document.title.toLowerCase().includes(query.toLowerCase())
+      );
+      const filteredLinks = fetchedLinks.filter((link) =>
+        link.title.toLowerCase().includes(query.toLowerCase())
+      );
+
+      setSearchResults([...filteredSongs, ...filteredDocuments, ...filteredLinks]);
+    } catch (error) {
+      console.error('Error fetching content:', error);
+    }
   };
 
   const closeResults = () => {
@@ -33,6 +59,8 @@ const MainPage = () => {
     <div className="main-page">
       <header className="main-header">
         <h1 className="app-title">SCC</h1>
+
+        {/* Mobile-friendly search bar */}
         <div className="search-container">
           <input
             className="search-input"
@@ -46,55 +74,54 @@ const MainPage = () => {
           >
             Search
           </button>
-          {/* <Link className="user-profile-link" to={'/user-profile/defaultuser'}>
-            <i className="fa fa-user-circle" aria-hidden="true"></i> AJ
-          </Link>
-          <div className="logout-button">
-            <i className="fa fa-sign-out" aria-hidden="true"></i>
-            <Logout />
-          </div> */}
         </div>
       </header>
 
+      {/* Feature Reminder moved to a collapsible section */}
       <FeatureReminder />
 
-      <div className="main-page-section search-results-section">
-        {searchResults && searchResults.length > 0 && <SearchResults results={searchResults} closeResults={closeResults} />}
+      
+      {/* Render Search Results */}
+      {searchResults.length > 0 && (
+        <div className="search-results-section">
+          <SearchResults results={searchResults} closeResults={closeResults} />
+        </div>
+      )}
+
+      {/* Calendar section (mobile-friendly) */}
+      <div className="main-page-section">
+        <EventCalendar />
+        {user && <MemberProfile member={user} />}
       </div>
 
-      <div className="main-page-section event-calendar-section">
-        <EventCalendar />
+      {/* Navigation Tabs */}
+      <div className="tab-navigation">
+        <nav className="navigation">
+          <button className="nav-button" onClick={() => setTabName('content')}>
+            <i className="fa fa-file" aria-hidden="true"></i> Library
+          </button>
+          <button className="nav-button" onClick={() => setTabName('members')}>
+            <i className="fa fa-users" aria-hidden="true"></i> Members
+          </button>
+          <button className="nav-button" onClick={() => setTabName('planner')}>
+            <i className="fa fa-calendar" aria-hidden="true"></i> Sessions
+          </button>
+        </nav>
+<Layout/>
+        {/* Tab Content */}
+        <div className="content-section">
+          {tabName === 'content' && <ContentViewer />}
+          {tabName === 'members' && <MembersPage />}
+          {tabName === 'planner' && <GenericViewToggler views={views} />}
+        </div>
       </div>
 
       <div className="main-page-section">
-        <OutreachPage/>
+        <OutreachPage />
       </div>
 
-      {(!searchResults || searchResults.length === 0) && (
-        <div className="tab-navigation">
-          <nav className="navigation">
-            <button className="nav-button" onClick={() => setTabName('content')}>
-              <i className="fa fa-file" aria-hidden="true"></i> Library
-            </button>
-            <button className="nav-button" onClick={() => setTabName('members')}>
-              <i className="fa fa-users" aria-hidden="true"></i> Members
-            </button>
-            <button className="nav-button" onClick={() => setTabName('planner')}>
-              <i className="fa fa-calendar" aria-hidden="true"></i> Sessions
-            </button>
-          </nav>
-          <GoUpButton />
-          <div className="content-viewer-section">
-            {tabName === 'content' && <ContentViewer />}
-          </div>
-          <div className=" members-page-section">
-            {tabName === 'members' && <MembersPage />}
-          </div>
-          <div className=" generic-view-toggler-section">
-            {tabName === 'planner' && <GenericViewToggler views={views} />}
-          </div>
-        </div>
-      )}
+      {/* GoUpButton for mobile-friendly scrolling */}
+      <GoUpButton />
     </div>
   );
 };
