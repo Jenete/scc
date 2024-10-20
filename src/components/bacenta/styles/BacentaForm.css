@@ -1,0 +1,152 @@
+.bacenta-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.bacenta-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.bacenta-form  .form-field {
+  margin-bottom: 15px;
+}
+
+.bacenta-form .form-field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bacenta-form .form-field input,
+.bacenta-form .form-field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.bacenta-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.bacenta-form .bacenta-fieldset {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.bacenta-form .member-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bacenta-form .member-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.bacenta-form .add-icon,
+.bacenta-form .remove-icon {
+  cursor: pointer;
+  color: #007bff;
+  transition: color 0.2s ease-in-out;
+}
+
+.bacenta-form .add-icon:hover
+ {
+  color: #0056b3;
+}
+.bacenta-form .remove-icon
+ {
+  color: #ff4040;
+}
+
+.bacenta-form .status-message,
+.bacenta-form .error-message {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bacenta-form .status-message {
+  color: #28a745;
+}
+
+.bacenta-form .error-message {
+  color: #dc3545;
+}
+
+.bacenta-form .add-new-button {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.bacenta-form .add-new-button:hover {
+  background-color: #0056b3;
+}
+
+.bacenta-form .bacenta-form-button,
+.bacenta-form .remove-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin: 0 10px;
+}
+
+.bacenta-form .remove-button {
+  background-color: #6c757d;
+}
+
+.bacenta-form .bacenta-form-button:hover {
+  background-color: #0056b3;
+}
+
+.bacenta-form .remove-button:hover {
+  background-color: #5a6268;
+}
+
+.bacenta-form .button-group {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .bacenta-form .bacenta-form {
+    padding: 15px;
+  }
+
+  .bacenta-form .button-group {
+    flex-direction: column;
+  }
+
+  .bacenta-form .button-group button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}

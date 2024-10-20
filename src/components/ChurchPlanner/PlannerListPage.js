@@ -70,7 +70,8 @@ const PlannerListPage = () => {
                 </ul>
               </div>
               <div>
-                <h4>TSA Song: {planner.tsaSong.title}</h4>
+                <h4>TSA Song: </h4>
+                <ul><li>{planner.tsaSong.title}</li></ul>
               </div>
               <div>
                 <h4>Announcements:</h4>

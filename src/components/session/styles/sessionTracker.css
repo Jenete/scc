@@ -112,3 +112,40 @@
 .sessionTrackerTable tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+.bacenta-label {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bacenta-selector {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.bacenta-selector:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.bacenta-selector-item {
+  color: #333;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .bacenta-selector {
+    width: 50%;
+  }
+}

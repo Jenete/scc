@@ -57,89 +57,116 @@ const InsightsComponent = ({ members, sessions }) => {
 
     return {totalMembers, participatingMembersTotal};
 };
+return (
+  <div className="insights-container">
+    <h2 className="insights-header">Church Insights</h2>
 
+    <section className="insight-card pie-chart-card">
+      <PieChartComponent
+        totalMembers={getSummaryObject().totalMembers}
+        participatingMembersTotal={getSummaryObject().participatingMembersTotal}
+      />
+      <div className="summary-text">{getSummary()}</div>
+    </section>
 
-  return (
-    <div className="insights-container">
-      <h2>Session and Member Insights</h2>
+    <section className="insight-card">
+      <details ref={detailsRef}>
+        <summary className="insight-summary">
+          <h3><i className="fa fa-chevron-circle-down"></i> Attendance Stats</h3>
+        </summary>
+        <article className="insight-content">
+          <BarChartComponent attendanceStats={attendanceStats} />
+          <ul className="insight-list">
+            {attendanceStats.sort().map((stat, index) => (
+              <li
+                key={index}
+                className={`insight-item ${stat?.totalSessions === 0 ? 'highlight-bad' : ''}`}
+              >
+                {stat.fullname}: Attended {stat.totalSessions} sessions
+              </li>
+            ))}
+          </ul>
+        </article>
+      </details>
+    </section>
 
-      <section className="insight-section">
-        <PieChartComponent totalMembers={getSummaryObject().totalMembers} participatingMembersTotal={getSummaryObject().participatingMembersTotal}/>
-        {getSummary()}
-      </section>
-      <hr></hr>
-      <section className="insight-section">
-        <details ref={detailsRef}>
-          <summary><h3><i className="fa fa-chevron-circle-down" aria-hidden="true"></i> Attendance Stats</h3></summary>
-          <article>
-            <BarChartComponent attendanceStats={attendanceStats}/>
-            <ul>
-              {attendanceStats.sort().map((stat, index) => (
-                <li key={index} className={stat?.totalSessions=== 0?'attendance-stat-bad':''}>{stat.fullname}: Attended {stat.totalSessions} sessions</li>
-              ))}
-            </ul>
-          </article>
-        </details>
-      </section>
+    <section className="insight-card">
+      <details>
+        <summary className="insight-summary">
+          <h3><i className="fa fa-chevron-circle-down"></i> Prayer Hours</h3>
+        </summary>
+        <article className="insight-content">
+          <ul className="insight-list">
+            {prayerHoursStats.map((stat, index) => (
+              <li key={index} className="insight-item">
+                {stat.fullname}: {stat.prayerHours} hours
+              </li>
+            ))}
+          </ul>
+        </article>
+      </details>
+    </section>
 
-      <section className="insight-section">
-        <details>
-          <summary><h3><i className="fa fa-chevron-circle-down" aria-hidden="true"></i> Prayer Hours</h3></summary>
-          <article>
-            <ul>
-              {prayerHoursStats.map((stat, index) => (
-                <li key={index}>{stat.fullname}: {stat.prayerHours} hours</li>
-              ))}
-            </ul>
-          </article>
-        </details>
-      </section>
+    <section className="insight-card">
+      <details>
+        <summary className="insight-summary">
+          <h3><i className="fa fa-chevron-circle-down"></i> Upcoming Birthdays</h3>
+        </summary>
+        <article className="insight-content">
+          <ul className="insight-list">
+            {birthdayStats.map((stat, index) => (
+              <li key={index} className="insight-item">
+                {stat.fullname}: {new Date(stat.birthday).toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+        </article>
+      </details>
+    </section>
 
-      <section className="insight-section">
-        <details>
-          <summary><h3><i className="fa fa-chevron-circle-down" aria-hidden="true"></i> Upcoming Birthdays</h3></summary>
-          <article>
-            <ul>
-              {birthdayStats.map((stat, index) => (
-                <li key={index}>{stat.fullname}: {new Date(stat.birthday).toLocaleDateString()}</li>
-              ))}
-            </ul>
-          </article>
-        </details>
-      </section>
+    <section className="insight-card">
+      <details>
+        <summary className="insight-summary">
+          <h3><i className="fa fa-chevron-circle-down"></i> Teacher Engagements</h3>
+        </summary>
+        <article className="insight-content">
+          <ul className="insight-list">
+            {teacherEngagementStats.map((stat, index) => (
+              <li key={index} className="insight-item">
+                {stat.teacher}: Led {stat.sessionCount} sessions
+              </li>
+            ))}
+          </ul>
+        </article>
+      </details>
+    </section>
 
-      <section className="insight-section">
-        <details>
-          <summary><h3><i className="fa fa-chevron-circle-down" aria-hidden="true"></i> Teacher Engagements</h3></summary>
-          <article>
-            <ul>
-              {teacherEngagementStats.map((stat, index) => (
-                <li key={index}>{stat.teacher}: Led {stat.sessionCount} sessions</li>
-              ))}
-            </ul>
-          </article>
-        </details>
-      </section>
-
-      <section className="insight-section session-topics-section">
-        <details>
-          <summary><h3><i className="fa fa-chevron-circle-down" aria-hidden="true"></i> Session Topics</h3></summary>
-          <article>
-            <ul className='session-topics-section'>
-              {sessionTopicsStats.map((stat, index) => (
-                <li key={index}>
-                  {stat.date} - {stat.area}: <strong>{stat.teacher} </strong>taught on <strong>"{stat.topic}"</strong>
-                  <ol>
-                  {stat.membersPresent?.map((member)=><li>{members.find((m)=>m.id ===member)?.fullname}</li>)}
-                  </ol>
-                </li>
-              ))}
-            </ul>
-          </article>
-        </details>
-      </section>
-    </div>
-  );
+    <section className="insight-card session-topics-card">
+      <details>
+        <summary className="insight-summary">
+          <h3><i className="fa fa-chevron-circle-down"></i> Session Topics</h3>
+        </summary>
+        <article className="insight-content">
+          <ul className="insight-list">
+            {sessionTopicsStats.map((stat, index) => (
+              <li key={index} className="session-topic-item">
+                <strong>{stat.teacher} </strong>
+                taught on <strong>"{stat.topic}"</strong> at {stat.area} {stat.date}
+                <ol className="members-list">
+                  {stat.membersPresent?.map((member) => (
+                    <li key={member}>
+                      {members.find((m) => m.id === member)?.fullname}
+                    </li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </details>
+    </section>
+  </div>
+);
 };
 
 export default InsightsComponent;

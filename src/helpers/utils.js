@@ -61,6 +61,25 @@ export const hasPermissionHelper = (user, users = []) => {
     return users.some(({ id }) => id === (user.id || user));
 };
 
+export async function getAccurateDateTime() {
+  const apiURL = "http://worldtimeapi.org/api/ip"; // Example external API for time
+  try {
+    // Try fetching date and time from external API
+    const response = await fetch(apiURL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch from API");
+    }
+    const data = await response.json();
+    const dateTime = new Date(data.datetime).toISOString().substring(0,19).replace('T','  ');;
+    return dateTime;
+  } catch (error) {
+    // If API fails, return local date and time
+    console.warn("Using local date and time due to an error:", error);
+    return new Date().toISOString().substring(0,19).replace('T','  ');
+  }
+}
+
+
 /**
  * Checks if the provided date is in the future or today.
  * use class to highlight className={`date-status-highlight date-status-highlight-${checkDateStatus(event.date)}`}

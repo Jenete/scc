@@ -1,170 +1,114 @@
-/* Insights Container */
 .insights-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 5px;
-  background-color: #f9f9fb;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  margin: auto;
+  gap: 20px;
 }
 
-/* Title Styles */
-.insights-container  h2 {
-  color: #3f51b5;
+.insights-header {
+  text-align: center;
   font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-/* Insight Sections */
-.insights-container .insight-section {
-  margin: 15px 0;
-  padding: 5px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.insights-container  .insight-section h3 {
-  display: flex;
-  align-items: center;
+  margin-bottom: 20px;
   color: #333;
-  cursor: pointer;
-}
-
-.insights-container .insight-section h3 i {
-  margin-right: 10px;
-  transition: transform 0.3s;
-}
-
-.insights-container .insight-section details[open] h3 i {
-  transform: rotate(180deg);
-}
-
-/* List Styles */
-.insights-container .insight-section ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 10px 0;
-}
-
-.insights-container .insight-section li {
-  padding: 5px 0;
-  color: #555;
-}
-
-/* Attendance Stat Bad Style */
-.insights-container .attendance-stat-bad {
-  color: #d32f2f; /* Red for low attendance */
-}
-
-/* Summary Section */
-.insights-container .summary {
-  font-size: 1.2rem;
-  color: #666;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .insights-container .insights-container {
-    padding: 5px;
-  }
-
-  .insights-container h2 {
-    font-size: 1.5rem;
-  }
-
-  .insights-container .insight-section {
-    padding: 10px;
-  }
-
-  .insights-container .insight-section h3 {
-    font-size: 1.2rem;
-  }
-
-  .insights-container .insight-section ul {
-    font-size: 0.9rem;
-  }
-}
-
-/* Session Topics Section Styles */
-.insights-container .session-topics-section {
-  list-style-type: none; /* Remove default bullets */
-  padding: 0;
-  margin: 20px 0;
-  font-family: 'Arial', sans-serif;
-}
-
-.insights-container .session-topics-section li {
-  background-color: #f5f5f5; /* Light gray background for each session */
-  padding: 15px;
-  margin-bottom: 10px;
-  border-left: 5px solid #007bff; /* Blue left border for emphasis */
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.insights-container .session-topics-section li:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
-}
-
-.insights-container .session-topics-section li strong {
-  color: #333; /* Darker color for teacher's name */
   font-weight: bold;
 }
 
-.insights-container .session-topics-section li::before {
-  content: "\f02d"; /* Font Awesome icon (e.g., book icon) */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 10px;
-  color: #007bff; /* Blue icon */
+.insight-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
 }
 
-/* Nested list styles for members present */
-.insights-container .session-topics-section ol {
-  margin: 10px 0 0 20px;
-  padding-left: 0;
+.insight-card:hover {
+  transform: scale(1.02);
 }
 
-.insights-container .session-topics-section ol li {
-  color: #666; /* Gray text for members */
-  font-size: 0.95em;
-  line-height: 1.5;
+.pie-chart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.insights-container .session-topics-section ol li::before {
-  content: "\f007"; /* Font Awesome user icon */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 5px;
-  color: #28a745; /* Green icon for members */
+.summary-text {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #666;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .insights-container .session-topics-section li {
-    font-size: 0.9em;
-    padding: 5px;
+.insight-summary {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.insight-summary h3 {
+  margin-left: 8px;
+  transition: color 0.3s;
+}
+
+.insight-summary:hover h3 {
+  color: #007bff;
+}
+
+.insight-content {
+  padding: 10px 0;
+}
+
+.insight-list {
+  list-style: none;
+  padding: 0;
+}
+.members-list {
+  padding: 0;
+}
+
+.insight-item,
+.session-topic-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+.highlight-bad {
+  background-color: #ffeded;
+  color: #d9534f;
+}
+
+.members-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.insights-divider {
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .insights-container {
+    padding: 10px;
   }
 
-  .insights-container .session-topics-section ol li {
-    font-size: 0.85em;
+  .insight-card {
+    padding: 15px;
+  }
+
+  .insight-summary h3 {
+    font-size: 1rem;
+  }
+
+  .insight-content {
+    padding: 5px 0;
+  }
+
+  .insight-item,
+  .session-topic-item {
+    font-size: 0.9rem;
   }
 }
-
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .insights-container .insights-container .insights-container {
-      padding: 5px;
-    }
-  
-    .insights-container .insights-container .pill-item {
-      padding: 8px 15px;
-      font-size: 12px;
-    }
-  }
-  

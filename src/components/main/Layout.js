@@ -10,6 +10,8 @@ import ContentViewer from '../ContentViewer';
 import OutreachPage from '../outreach/OutreachPage';
 import GoUpButton from '../extra/GoUpButton';
 import FeatureReminder from '../extra/FeatureReminder';
+import BacentaMainView from '../bacenta/BacentaMainView';
+import UserActivities from '../activities/UserActivities';
 
 const Layout = () => {
   const [activeView, setActiveView] = useState('dashboard');
@@ -38,22 +40,28 @@ const Layout = () => {
               <i className="fa fa-home"></i> <span> Home</span>
             </li>
             <li className={activeView === 'analytics' ? 'active' : ''} onClick={() => switchView('analytics')}>
-              <i className="fa fa-chart-bar"></i> <span> Insights</span>
+              <i className="fa fa-line-chart"></i> <span> Insights</span>
             </li>
             <li className={activeView === 'members' ? 'active' : ''} onClick={() => switchView('members')}>
               <i className="fa fa-users"></i> <span> Members</span>
             </li>
             <li className={activeView === 'media' ? 'active' : ''} onClick={() => switchView('media')}>
-              <i className="fa fa-file"></i> <span> Media</span>
+              <i className="fa fa-cloud-download"></i> <span> Media</span>
             </li>
             <li className={activeView === 'plan' ? 'active' : ''} onClick={() => switchView('plan')}>
-              <i className="fa fa-map-marker"></i> <span> Plan</span>
+              <i className="fa fa-pencil-square"></i> <span> Plan</span>
             </li>
             <li className={activeView === 'session' ? 'active' : ''} onClick={() => switchView('session')}>
               <i className="fa fa-calendar"></i> <span> Session</span>
             </li>
             <li className={activeView === 'outreach' ? 'active' : ''} onClick={() => switchView('outreach')}>
               <i className="fa fa-address-book"></i> <span> Outreach</span>
+            </li>
+            <li className={activeView === 'bacenta' ? 'active' : ''} onClick={() => switchView('bacenta')}>
+              <i className="fa fa-globe"></i> <span> Bacenta</span>
+            </li>
+            <li className={activeView === 'actions' ? 'active' : ''} onClick={() => switchView('actions')}>
+              <i className="fa fa-user-secret"></i> <span> Actions</span>
             </li>
           </ul>
         </nav>
@@ -89,7 +97,9 @@ const Layout = () => {
           {activeView === 'session' && <div><SessionTrackerView></SessionTrackerView></div>}
           {activeView === 'plan' && <div><SundayService/></div>}
           {activeView === 'outreach' && <div><OutreachPage/></div>}
+          {activeView === 'bacenta' && <div><BacentaMainView/></div>}
           {activeView === 'profile' && <div>{user && <MemberProfile member={user} />}</div>}
+          {activeView === 'actions' && <div>{user && <UserActivities />}</div>}
         </section>
       </div>
       <GoUpButton />

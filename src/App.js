@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<WelcomePage />} />
           <Route path="/scc" element={<WelcomePage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegisterMember />} />
+          <Route path="/register" element={<RegisterMember isNewMember={true}/>} />
           <Route path="/session/:id" element={<SessionDetails />} />
           <Route path="/mainpage" element={
             <ProtectedRoute>

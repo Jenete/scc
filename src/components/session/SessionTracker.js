@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getAllMembers } from '../../controllers/MemberControllerMock';
 import { getAllSessions, addSession, updateSession, removeSession } from '../../controllers/SessionTrackerController';
 import './styles/sessionTracker.css';
+import { getAllBacentas } from "../../services/BacentaService";
 
 const SessionTracker = () => {
   const [sessions, setSessions] = useState([]);
+  const [bacentas, setBacentas] = useState([]);
   const [members, setMembers] = useState([]);
   const [currentSession, setCurrentSession] = useState(null);
   const [formData, setFormData] = useState({
@@ -12,6 +14,7 @@ const SessionTracker = () => {
     area: '',
     details: '',
     teacher: '',
+    bacenta: '',
     membersPresent: []
   });
   const [error, setError] = useState('');
@@ -26,6 +29,14 @@ const SessionTracker = () => {
         setError(err.message);
       }
     };
+    const fetchBacentas = async () => {
+      try {
+        const bacentaData = await getAllBacentas();
+        if(bacentaData)setBacentas(bacentaData);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
 
     const fetchMembers = async () => {
       try {
@@ -35,17 +46,21 @@ const SessionTracker = () => {
         setError(err.message);
       }
     };
-
+    clearMessaging();
     fetchSessions();
     fetchMembers();
+    fetchBacentas();
   }, []);
 
   const handleInputChange = (e) => {
+    clearMessaging();
     const { name, value } = e.target;
+    
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleMemberChange = (memberId) => {
+    clearMessaging();
     setFormData((prev) => {
       const newMembersPresent = prev.membersPresent.includes(memberId)
         ? prev.membersPresent.filter(id => id !== memberId)
@@ -56,9 +71,11 @@ const SessionTracker = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    clearMessaging();
     try {
       if (currentSession) {
         await updateSession({ ...formData, id: currentSession.id });
+        
       } else {
         await addSession(formData);
       }
@@ -82,13 +99,17 @@ const SessionTracker = () => {
       area: session.area,
       details: session.details,
       teacher: session.teacher,
-      membersPresent: session.membersPresent
+      membersPresent: session.membersPresent,
+      bacenta: session.bacenta || ''
     });
     handleExpandDetails();
   };
-
+ const clearMessaging = () => {
+  setError("");
+ }
   const handleDeleteSession = async (sessionId) => {
     try {
+      clearMessaging();
       await removeSession(sessionId);
       setSessions(sessions.filter(s => s.id !== sessionId));
     } catch (err) {
@@ -109,7 +130,6 @@ const SessionTracker = () => {
   return (
     <div className="sessionTrackerContainer">
       <h2 className="sessionTrackerTitle">Session Tracker</h2>
-      {error && <p className="sessionTrackerError">{error}</p>}
       <details ref={detailsRef}>
         <summary>  Record new session</summary>
         <article>
@@ -134,6 +154,18 @@ const SessionTracker = () => {
             className="sessionTrackerInput"
           />
         </label>
+        <label className="bacenta-label">
+          Bacenta:
+          <select name='bacenta' onChange={handleInputChange} className="bacenta-selector">
+            <option value="" disabled selected={!formData.bacenta}>Select a Bacenta</option>
+            {bacentas?.map((bacenta) => (
+              <option key={bacenta.id} value={bacenta.id} selected={bacenta.id === formData.bacenta}>
+                {bacenta.name} - {bacenta.leader}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <label>
           Details:
           <textarea
@@ -167,6 +199,7 @@ const SessionTracker = () => {
             </label>
           ))}
         </fieldset>
+      {error && <p className="sessionTrackerError">{error}</p>}
         <button type="submit" className="sessionTrackerButton">
           {currentSession ? 'Update Session' : 'Add Session'}
         </button>

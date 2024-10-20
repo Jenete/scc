@@ -5,6 +5,7 @@ import {
     dbremoveMember,
     dbgetMemberById
   } from "../services/MemberService";
+import ActivityController from "./ActivityController";
   
   class UserController {
     constructor() {
@@ -57,6 +58,7 @@ import {
         if (member) {
           this.currentUser = member;
           this.logActivity(`User ${member.fullname} logged in.`);
+          ActivityController.createActivity('Logged',`User ${member.fullname} logged in.`);
           return member;
         } else {
           throw new Error("Invalid username or password");

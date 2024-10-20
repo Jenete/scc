@@ -3,6 +3,7 @@ import './styles/ChurchPlanner.css'; // Ensure the CSS file is correctly referen
 import ChurchPlannerPreviewPage from './ChurchPlannerPreviewPage';
 import ResultsContainer from './ResultsContainer.js';
 import FirestoreService from '../../services/FirebaseConfig.js';
+import DataRender from '../data/DataRender.js';
 
 const ChurchPlanner = () => {
     
@@ -51,7 +52,7 @@ const ChurchPlanner = () => {
     try {
         setStatusMessage('Loading please wait...');
 
-        const noTitleHandler = choirSongs.some((value)=>!value?.title)|| dancingStarsSongs.some((value)=>!value?.title)|| songs.some((value)=>!value?.title) || !tsaSong.title;
+        const noTitleHandler = choirSongs.some((value)=>!value?.title)|| dancingStarsSongs.some((value)=>!value?.title)|| songs.some((value)=>!value?.title) || !tsaSong?.title;
 
         if (noTitleHandler) {
             setStatusMessage('Please provide title to all the boxes');
@@ -137,23 +138,31 @@ const ChurchPlanner = () => {
             <input
               type="text"
               placeholder="Song Title"
-              value={song.title}
+              value={song?.title}
               onChange={(e) => handleSongChange(song.id, { ...song, title: e.target.value }, 'songs')}
               className="input"
             />
-            <ResultsContainer filename={song.title}/>
-            <textarea
-              placeholder="Lyrics"
-              value={song.lyrics}
-              onChange={(e) => handleSongChange(song.id, { ...song, lyrics: e.target.value }, 'songs')}
-              className="textarea"
-            />
-            <input
-              type="file"
-              accept="audio/*"
-              onChange={(e) => handleSongChange(song.id, { ...song, file: e.target.files[0] }, 'songs')}
-              className="fileInput"
-            />
+            <ResultsContainer filename={song?.title}/>
+
+            <details>
+              <summary>
+                Lyrcis and file
+              </summary>
+              <article>
+                <textarea
+                  placeholder="Lyrics"
+                  value={song.lyrics}
+                  onChange={(e) => handleSongChange(song.id, { ...song, lyrics: e.target.value }, 'songs')}
+                  className="textarea"
+                />
+                <input
+                  type="file"
+                  accept="audio/*"
+                  onChange={(e) => handleSongChange(song.id, { ...song, file: e.target.files[0] }, 'songs')}
+                  className="fileInput"
+                />
+            </article>
+            </details>
           </div>
         ))}
         <button onClick={handleAddSong}>Add New Song</button>
@@ -166,23 +175,30 @@ const ChurchPlanner = () => {
             <input
               type="text"
               placeholder="Song Title"
-              value={song.title}
+              value={song?.title}
               onChange={(e) => handleSongChange(song.id, { ...song, title: e.target.value }, 'choirSongs')}
               className="input"
             />
-            <ResultsContainer filename={song.title}/>
-            <textarea
-              placeholder="Lyrics"
-              value={song.lyrics}
-              onChange={(e) => handleSongChange(song.id, { ...song, lyrics: e.target.value }, 'choirSongs')}
-              className="textarea"
-            />
-            <input
-              type="file"
-              accept="audio/*"
-              onChange={(e) => handleSongChange(song.id, { ...song, file: e.target.files[0] }, 'choirSongs')}
-              className="fileInput"
-            />
+            <ResultsContainer filename={song?.title}/>
+            <details>
+              <summary>
+                Lyrcis and file
+              </summary>
+              <article>
+                  <textarea
+                  placeholder="Lyrics"
+                  value={song.lyrics}
+                  onChange={(e) => handleSongChange(song.id, { ...song, lyrics: e.target.value }, 'choirSongs')}
+                  className="textarea"
+                />
+                <input
+                  type="file"
+                  accept="audio/*"
+                  onChange={(e) => handleSongChange(song.id, { ...song, file: e.target.files[0] }, 'choirSongs')}
+                  className="fileInput"
+                />
+              </article>
+            </details>
           </div>
         ))}
         <button onClick={handleAddChoirSong}>Add New Choir Song</button>
@@ -195,17 +211,17 @@ const ChurchPlanner = () => {
             <input
               type="text"
               placeholder="Song Title"
-              value={song.title}
+              value={song?.title}
               onChange={(e) => handleSongChange(song.id, { ...song, title: e.target.value }, 'dancingStarsSongs')}
               className="input"
             />
-            <ResultsContainer filename={song.title}/>
-            <textarea
+            <ResultsContainer filename={song?.title}/>
+            {/* <textarea
               placeholder="Lyrics"
               value={song.lyrics}
               onChange={(e) => handleSongChange(song.id, { ...song, lyrics: e.target.value }, 'dancingStarsSongs')}
               className="textarea"
-            />
+            /> */}
             <input
               type="file"
               accept="audio/*"
@@ -223,11 +239,11 @@ const ChurchPlanner = () => {
           <input
             type="text"
             placeholder="Song Title"
-            value={tsaSong.title}
+            value={tsaSong?.title}
             onChange={(e) => handleTsaSongChange({ ...tsaSong, title: e.target.value })}
             className="input"
           />
-          <ResultsContainer filename={tsaSong.title}/>
+          <ResultsContainer filename={tsaSong?.title}/>
           <textarea
             placeholder="Lyrics"
             value={tsaSong.lyrics}
@@ -250,7 +266,7 @@ const ChurchPlanner = () => {
             <input
               type="text"
               placeholder="Announcement Title"
-              value={announcement.title}
+              value={announcement?.title}
               onChange={(e) => setAnnouncements(announcements.map(a => a.id === announcement.id ? { ...announcement, title: e.target.value } : a))}
               className="input"
             />

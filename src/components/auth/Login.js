@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from './AuthContext';
 import './styles/Login.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const { login } = useContext(AuthContext);
@@ -12,7 +11,7 @@ const Login = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const success = await login(email, password);
+    const success = await login('', password);
     if (!success) {
       setError('Invalid username or password');
     }
@@ -27,16 +26,7 @@ const Login = () => {
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Username</label>
-          <input 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
-          />
-        </div>
-        <div>
-          <label>Password</label>
+          <label>Enter code</label>
           <input 
             type="password" 
             value={password} 
@@ -45,6 +35,7 @@ const Login = () => {
           />
         </div>
         <button type="submit">Login</button>
+        <Link to={'/register'}>New? Click here</Link>
       </form>
     </div>
   );

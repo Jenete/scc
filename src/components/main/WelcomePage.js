@@ -6,7 +6,7 @@ const WelcomePage = () => {
   const navigate = useNavigate(); // React Router hook for navigation
 
   const goToLogin = () => {
-    navigate('/mainpage');
+    navigate('/login');
   };
 
   return (

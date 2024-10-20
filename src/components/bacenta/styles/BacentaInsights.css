@@ -1,0 +1,77 @@
+/* Bacenta Insights Container */
+.bacenta-insights-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Heading */
+.bacenta-insights-container h2 {
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Insight Card */
+.bacenta-insights-container .insight-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.bacenta-insights-container .insight-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Title */
+.bacenta-insights-container .insight-card h3 {
+  font-size: 20px;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+/* Card Content */
+.bacenta-insights-container .insight-card p {
+  font-size: 18px;
+  color: #666;
+}
+
+.bacenta-insights-container .insight-card ol {
+  margin-left: 20px;
+}
+
+.bacenta-insights-container .insight-card li {
+  font-size: 16px;
+  color: #444;
+  margin: 5px 0;
+}
+
+/* Responsive Grid Layout */
+.bacenta-insights-container .bacenta-insights-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* FontAwesome Icon Styling */
+.bacenta-insights-container .fa-user {
+  margin-left: 5px;
+  color: #4a90e2;
+}
+
+/* Responsive for smaller devices */
+@media (max-width: 768px) {
+  .bacenta-insights-container .bacenta-insights-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+  

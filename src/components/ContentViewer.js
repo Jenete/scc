@@ -9,7 +9,7 @@ const ContentViewer = () => {
   const [songs, setSongs] = useState([]);
   const [documents, setDocuments] = useState([]);
   const [links, setLinks] = useState([]);
-  const [fileToLoad, setFileToLoad] = useState('songs');
+  const [fileToLoad, setFileToLoad] = useState('upload');
   const [showMessage, setShowMessage] = useState(false);
   const [messageText, setMessageText] = useState('');
   const [messageType, setMessageType] = useState(0);
@@ -119,6 +119,10 @@ const ContentViewer = () => {
             ))}
           </ul>
         );
+      case 'upload':
+        return (
+          <FileUploadForm />
+        );
       default:
         return <p>No content available.</p>;
     }
@@ -126,19 +130,12 @@ const ContentViewer = () => {
 
   return (
     <div className="content-viewer">
-      <details>
-        <summary><i className="fa fa-upload" aria-hidden="true"></i> Upload new files</summary>
-        <article>
-          <FileUploadForm />
-        </article>
-      </details>
-      <hr />
       <div className="tab-bar">
-        <span
-          onClick={() => setFileToLoad('documents')}
-          className={`tab-pill ${fileToLoad === 'documents' ? 'active-pill' : ''}`}
+      <span
+          onClick={() => setFileToLoad('upload')}
+          className={`tab-pill ${fileToLoad === 'upload' ? 'active-pill' : ''}`}
         >
-          Documents
+          Upload
         </span>
         <span
           onClick={() => setFileToLoad('songs')}
@@ -147,11 +144,18 @@ const ContentViewer = () => {
           Songs & Lyrics
         </span>
         <span
+          onClick={() => setFileToLoad('documents')}
+          className={`tab-pill ${fileToLoad === 'documents' ? 'active-pill' : ''}`}
+        >
+          Documents
+        </span>
+        <span
           onClick={() => setFileToLoad('links')}
           className={`tab-pill ${fileToLoad === 'links' ? 'active-pill' : ''}`}
         >
           Links
         </span>
+        
       </div>
       <h2>Content List</h2>
       {showMessage && <MessagePage messageText={messageText} messageType={messageType} />}

@@ -9,6 +9,7 @@ import {
     dbupdateContact,
     dbremoveContact
   } from "../services/MemberService";
+import ActivityController from "./ActivityController";
   
   // Get all members
   export const getAllMembers = async () => {
@@ -39,6 +40,7 @@ import {
   export const addMember = async (newMember) => {
     try {
       const member = await dbaddMember(newMember);
+      //ActivityController.createActivity('Member added','added a member');
       return member;
     } catch (error) {
       console.error("Error adding member:", error);
@@ -57,6 +59,7 @@ import {
         
         // Check if the session member exists and if the IDs match
         if (parsedSessionMember?.id === member.id) {
+          ActivityController.createActivity('Member updated','updated a member');
           sessionStorage.setItem('sccuser', JSON.stringify(member));
         }
       }
@@ -71,6 +74,8 @@ import {
   export const removeMember = async (memberId) => {
     try {
       await dbremoveMember(memberId);
+      ActivityController.createActivity('Member removed','removed a member');
+
     } catch (error) {
       console.error("Error removing member:", error);
       throw new Error("Error removing member");
@@ -106,6 +111,8 @@ export const getAllContacts = async () => {
 export const addContact = async (newContact) => {
   try {
     const contact = await dbaddContact(newContact);
+    ActivityController.createActivity('Contact added','added a contact');
+
     return contact;
   } catch (error) {
     console.error("Error adding contact:", error);
@@ -128,6 +135,8 @@ export const updateContact = async (updatedContact) => {
 export const removeContact = async (contactId) => {
   try {
     await dbremoveContact(contactId);
+    ActivityController.createActivity('Contact removed','removed a contact');
+
   } catch (error) {
     console.error("Error removing contact:", error);
     throw new Error("Error removing contact");

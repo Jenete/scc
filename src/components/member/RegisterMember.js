@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { addMember } from "../../controllers/MemberControllerMock";
 import './styles/registerMember.css'; 
+import { useNavigate } from "react-router-dom";
 
-const RegisterMember = () => {
+const RegisterMember = ({isNewMember}) => {
   const [formData, setFormData] = useState({
     fullname: "",
     cellnumber: "",
@@ -10,6 +11,7 @@ const RegisterMember = () => {
     address: "",
     birthday: ""
   });
+  const navigate = useNavigate();
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
@@ -51,6 +53,8 @@ const RegisterMember = () => {
         birthday: "",
       })
       setError(null); // Clear any previous errors
+
+      if(isNewMember === true)navigate('/login');
     } catch (err) {
       setError(err.error);
       setMessage(null);

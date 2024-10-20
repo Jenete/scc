@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import ContentViewer from './ContentViewer';
 import FirestoreService from '../services/FirebaseConfig.js';
 import './styles/MainPage.css';
-import SearchResults from './SearchResults.js';
 import MembersPage from './MembersPage.js';
 import GenericViewToggler from './extra/GenericViewToggler.js';
 import SessionTrackerView from './session/SessionTrackerView.js';
-import FeatureReminder from './extra/FeatureReminder.js';
 import GoUpButton from './extra/GoUpButton.js';
 import EventCalendar from './calendar/EventCalendar.js';
 import SundayService from './session/SundayService.js';
@@ -17,7 +15,6 @@ import Layout from './main/Layout.js';
 const MainPage = () => {
   const firestoreService = new FirestoreService('scc');
   const [tabName, setTabName] = useState('members');
-  const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const user = JSON.parse(sessionStorage.getItem('sccuser'));
 

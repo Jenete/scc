@@ -16,7 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Export the Firebase services
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 const sessionsCollection = collection(db, "sessions");
 

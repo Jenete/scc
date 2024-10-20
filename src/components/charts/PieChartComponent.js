@@ -18,7 +18,7 @@ const PieChartComponent = ({ totalMembers, participatingMembersTotal }) => {
   return (
     <div className="pie-chart-container">
       <details>
-        <summary><h3>Participation Overview</h3></summary>
+        <summary><h3>Participation</h3></summary>
         <article>
         <Pie data={data} />
         </article>
