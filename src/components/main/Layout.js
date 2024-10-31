@@ -12,6 +12,7 @@ import GoUpButton from '../extra/GoUpButton';
 import FeatureReminder from '../extra/FeatureReminder';
 import BacentaMainView from '../bacenta/BacentaMainView';
 import UserActivities from '../activities/UserActivities';
+import Messaging from '../message/Messaging';
 
 const Layout = () => {
   const [activeView, setActiveView] = useState('dashboard');
@@ -38,6 +39,9 @@ const Layout = () => {
           <ul>
             <li className={activeView === 'dashboard' ? 'active' : ''} onClick={() => switchView('dashboard')}>
               <i className="fa fa-home"></i> <span> Home</span>
+            </li>
+            <li className={activeView === 'message' ? 'active' : ''} onClick={() => switchView('message')}>
+              <i className="fa fa-comments"></i> <span> Chat</span>
             </li>
             <li className={activeView === 'analytics' ? 'active' : ''} onClick={() => switchView('analytics')}>
               <i className="fa fa-line-chart"></i> <span> Insights</span>
@@ -90,6 +94,7 @@ const Layout = () => {
         
       </div>
             </div>}
+          {activeView === 'message' && <div><Messaging/></div>}
           {activeView === 'analytics' && <div><InsightsView/></div>}
           {activeView === 'members' && <div> <MembersPage /></div>}
           {activeView === 'media' && <div><ContentViewer/></div>}
