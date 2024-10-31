@@ -68,12 +68,7 @@
   background-color: #0056b3;
 }
 
-.content-viewer .item-preview-iframe {
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
+
 
 .content-viewer .details {
   margin-top: 20px;
@@ -87,4 +82,128 @@
 
 .content-viewer details[open] summary {
   color: #007bff;
+}
+
+/* Container for the list */
+.all-links-displayer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual link item */
+.link-displayer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Link item hover effect */
+.link-displayer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Title of each link */
+.link-displayer strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* The 'Open Link' button */
+.link-displayer a {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+/* 'Open Link' button hover effect */
+.link-displayer a:hover {
+  color: #fff;
+  background-color: #007bff;
+}
+
+/* Main container for the document list */
+.all-doc-displayer {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual document item */
+.doc-displayer {
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: auto;
+}
+
+/* Document title link */
+.doc-displayer a {
+  font-size: 1.1rem;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+/* Hover effect for document card */
+.doc-displayer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Iframe preview styling */
+.all-doc-displayer .item-preview-iframe {
+  width: 100%;
+  min-width: 350px;
+  height: 200px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.all-doc-displayer .item-preview-iframe:hover {
+  transform: scale(1.02);
+}
+
+/* Open link styling */
+.all-doc-displayer .open-link {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+/* Open link hover effect */
+.all-doc-displayer .open-link:hover {
+  color: #fff;
+  background-color: #007bff;
 }

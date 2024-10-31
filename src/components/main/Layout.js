@@ -86,7 +86,6 @@ const Layout = () => {
             
             {/* Calendar section (mobile-friendly) */}
       <div className="main-page-section">
-      {user && <MemberProfile member={user} />}
         <EventCalendar />
         
       </div>

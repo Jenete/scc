@@ -6,12 +6,15 @@ class ActivityController {
     async createActivity(title, description, userId) {
         // Construct activity data with provided parameters
         let user = JSON.parse(sessionStorage.getItem('sccuser'));
+        if(!user) {
+            user = {fullname: 'user', id:'user1'};
+        }  
         
         const activityData = {
         id: generateID(),
         title: title?.trim(),
         description: user?.fullname +" "+description?.trim(),
-        assignedTo: user.id, // Assign the activity to the user
+        assignedTo: user?.id, // Assign the activity to the user
         createdAt: new Date().toISOString(), // Optionally add a created timestamp
         completed: false, // Initialize as not completed
         };

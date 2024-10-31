@@ -5,18 +5,21 @@ import {
   getPrayerHoursStats, 
   getBirthdayStats, 
   getTeacherEngagementStats, 
-  getSessionTopicsStats 
+  getSessionTopicsStats,
+  getBacentaSessionStats 
 } from '../../controllers/InsightsController';
 import './styles/insightsComponent.css';
 import BarChartComponent from '../charts/BarChartComponent';
 import PieChartComponent from '../charts/PieChartComponent';
+import LineChartComponent from '../charts/LineChartComponent';
 
-const InsightsComponent = ({ members, sessions }) => {
+const InsightsComponent = ({ members, sessions, bacentas }) => {
   const [attendanceStats, setAttendanceStats] = useState([]);
   const [prayerHoursStats, setPrayerHoursStats] = useState([]);
   const [birthdayStats, setBirthdayStats] = useState([]);
   const [teacherEngagementStats, setTeacherEngagementStats] = useState([]);
   const [sessionTopicsStats, setSessionTopicsStats] = useState([]);
+  const [bacentaSessionStats, setBacentaSessionStats] = useState([]);
   const detailsRef = useRef(null);
 
   useEffect(() => {
@@ -25,7 +28,8 @@ const InsightsComponent = ({ members, sessions }) => {
     setBirthdayStats(getBirthdayStats(members));
     setTeacherEngagementStats(getTeacherEngagementStats(sessions));
     setSessionTopicsStats(getSessionTopicsStats(sessions));
-  }, [members, sessions]);
+    setBacentaSessionStats(getBacentaSessionStats(bacentas, sessions));
+  }, [members, sessions, bacentas]);
 
   const getSummary = () => {
     // Get total number of members
@@ -165,6 +169,37 @@ return (
         </article>
       </details>
     </section>
+
+
+     {/* Bacenta Session Stats Section */}
+     <section className="insight-card bacenta-session-card">
+        <details>
+          <summary className="insight-summary">
+            <h3><i className="fa fa-chevron-circle-down"></i> Bacenta Sessions</h3>
+          </summary>
+          <article className="insight-content-bacenta-session">
+              <ul className="insight-list-bacenta-session">
+                {bacentaSessionStats.map((stat, index) => (
+                  <li key={index} className="session-item-bacenta-session">
+                    <div className="session-info">
+                      <strong className="bacenta-name">{stat.bacentaName}</strong> 
+                      <span className="leader-info">by {stat.leader}</span>
+                      <p className="session-count">Total sessions: {stat.totalSessions}</p>
+                    </div>
+
+                    {/* Line Chart Section */}
+                    <div className="chart-wrapper">
+                      <LineChartComponent sessions={stat?.sessions} />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+        </details>
+      </section>
+
+      
   </div>
 );
 };

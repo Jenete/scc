@@ -3,6 +3,7 @@ import MemberList from "./MemberList";
 import RegisterMember from "./RegisterMember";
 import MemberProfile from "./MemberProfile";
 import './styles/membersView.css';
+import TreeView from "./TreeView";
 
 const MembersView = () => {
   const [activeView, setActiveView] = useState("list"); // 'list', 'register', or 'profile'
@@ -22,21 +23,28 @@ const MembersView = () => {
       {/* Navigation Tabs */}
       <div className="view-tabs">
         <button
+          className={`view-tab-button ${activeView === "tree" ? "active" : ""}`}
+          onClick={() => handleViewSwitch("tree")}
+        >
+          Family
+        </button>
+        <button
           className={`view-tab-button ${activeView === "list" ? "active" : ""}`}
           onClick={() => handleViewSwitch("list")}
         >
-          Member List
+          Members
         </button>
         <button
           className={`view-tab-button ${activeView === "register" ? "active" : ""}`}
           onClick={() => handleViewSwitch("register")}
         >
-          Register Member
+          Register
         </button>
       </div>
 
       {/* Conditionally render the active view */}
       <div className="view-content">
+       {activeView === "tree" && <TreeView />}
         {activeView === "list" && (
           <MemberList onSelectMember={(member) => handleViewSwitch("profile", member)} />
         )}

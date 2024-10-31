@@ -78,6 +78,9 @@ export async function getAccurateDateTime() {
     return new Date().toISOString().substring(0,19).replace('T','  ');
   }
 }
+export function getInstantDateTime() {
+    return new Date().toISOString().substring(0,19).replace('T',' ⌚ ');
+}
 
 
 /**

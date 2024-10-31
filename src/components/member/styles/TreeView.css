@@ -1,0 +1,85 @@
+.tree-view-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tree-view-container .tree-view-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .tree-view-container .tree-view {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tree-view-container .tree-node {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: box-shadow 0.3s;
+  }
+  
+  .tree-view-container .tree-node:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tree-view-container .bacenta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tree-view-container .bacenta-title {
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  .tree-view-container .bacenta-count {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .tree-view-container .member-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+  
+  .tree-view-container .member-item {
+    padding: 5px;
+    border-left: 4px solid #007bff;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .tree-view-container .member-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .tree-view-container .unassigned-section {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+  }
+  
+  .tree-view-container .unassigned-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+  }
+  
+  .tree-view-container .unassigned-item {
+    color: #c0392b;
+    padding: 5px;
+  }
+  

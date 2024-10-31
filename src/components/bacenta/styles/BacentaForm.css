@@ -90,9 +90,10 @@
 
 .bacenta-form .add-new-button {
   display: block;
-  width: 100%;
-  background-color: #007bff;
-  color: white;
+  width: 200px;
+  background-color: transparent;
+  box-shadow: 2px 2px 2px gray;
+  color: rgb(26, 25, 25);
   border: none;
   padding: 10px;
   border-radius: 4px;

@@ -80,10 +80,11 @@ const BacentaForm = ({ currentBacenta, setCurrentBacenta, onCloseForm }) => {
   };
 
   const addUser = (member) => {
-    
+    if(!member) return;
+    const memberx = {fullname: member?.fullname, id: member?.id, cellnumber: member?.cellnumber };
     if(bacentaMembers)
-    setBacentaMembers([...bacentaMembers, member]);
-    else setBacentaMembers([member]);
+    setBacentaMembers([...bacentaMembers, memberx]);
+    else setBacentaMembers([memberx]);
   };
 
   const removeUser = (id) => {
@@ -152,12 +153,15 @@ const BacentaForm = ({ currentBacenta, setCurrentBacenta, onCloseForm }) => {
           type="button"
           className="add-new-button"
           onClick={() => setAddNew(true)}
-        >
-          Add New Member
+        ><i
+        className="fa fa-user-plus add-icon"
+        aria-hidden="true"
+      ></i>
+          View all
         </button>
       ) : (
         <fieldset className="bacenta-fieldset">
-          <legend>Add New Member</legend>
+          <legend>Choose Member</legend>
           <ul className="member-list">
             {membersNotInBacenta.map((member) => (
               <li key={member.id}>

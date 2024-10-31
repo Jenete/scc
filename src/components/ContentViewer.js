@@ -84,9 +84,9 @@ const ContentViewer = () => {
         );
       case 'documents':
         return (
-          <ul>
+          <ul className='all-doc-displayer'>
             {documents.map((document, index) => (
-              <li key={document.id}>
+              <li key={document.id} className='doc-displayer'>
                 <a href={document.fileUrl} target="_blank" rel="noopener noreferrer">
                   <strong>{`${index + 1}. `} {document.title}</strong>
                 </a>
@@ -108,9 +108,9 @@ const ContentViewer = () => {
         );
       case 'links':
         return (
-          <ul>
+          <ul className='all-links-displayer'>
             {links.map((link, index) => (
-              <li key={link.id}>
+              <li key={link.id} className='link-displayer'>
                 <strong>{`${index + 1}. `} {link.title}</strong>
                 <a href={link.url} target="_blank" rel="noopener noreferrer">
                   Open Link
@@ -141,13 +141,13 @@ const ContentViewer = () => {
           onClick={() => setFileToLoad('songs')}
           className={`tab-pill ${fileToLoad === 'songs' ? 'active-pill' : ''}`}
         >
-          Songs & Lyrics
+          Songs
         </span>
         <span
           onClick={() => setFileToLoad('documents')}
           className={`tab-pill ${fileToLoad === 'documents' ? 'active-pill' : ''}`}
         >
-          Documents
+          Docs
         </span>
         <span
           onClick={() => setFileToLoad('links')}
@@ -157,7 +157,6 @@ const ContentViewer = () => {
         </span>
         
       </div>
-      <h2>Content List</h2>
       {showMessage && <MessagePage messageText={messageText} messageType={messageType} />}
       {renderContent()}
     </div>

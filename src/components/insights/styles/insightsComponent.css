@@ -90,6 +90,65 @@
   margin: 20px 0;
 }
 
+.insight-content-bacenta-session {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.insight-list-bacenta-session {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.session-item-bacenta-session {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.session-item-bacenta-session:hover {
+  transform: translateY(-5px);
+}
+
+.insight-content-bacenta-session .session-info {
+  margin-bottom: 20px;
+}
+
+.insight-content-bacenta-session .bacenta-name {
+  font-size: 1.5rem;
+  color: #343a40;
+}
+
+.insight-content-bacenta-session .leader-info {
+  display: block;
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+.insight-content-bacenta-session .session-count {
+  font-size: 1.1rem;
+  color: #28a745;
+  margin-top: 10px;
+}
+
+.insight-content-bacenta-session .chart-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+
+
+
 @media screen and (max-width: 768px) {
   .insights-container {
     padding: 10px;

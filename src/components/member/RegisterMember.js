@@ -2,6 +2,8 @@ import { useState } from "react";
 import { addMember } from "../../controllers/MemberControllerMock";
 import './styles/registerMember.css'; 
 import { useNavigate } from "react-router-dom";
+import TimeViewer from "../calendar/TimeViewer";
+import { getInstantDateTime } from "../../helpers/utils";
 
 const RegisterMember = ({isNewMember}) => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,7 @@ const RegisterMember = ({isNewMember}) => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -42,7 +45,7 @@ const RegisterMember = ({isNewMember}) => {
   
     try {
         setMessage('Loading...');
-      const newMember = await addMember(formData);
+      const newMember = await addMember({...formData, created: getInstantDateTime()});
       console.log("New Member Registered:", newMember);
       setMessage(`New Member Registered: ${newMember?.fullname}`)
       setFormData({
@@ -63,6 +66,7 @@ const RegisterMember = ({isNewMember}) => {
 
   return (
     <form className="register-member-form" onSubmit={handleSubmit}>
+      <TimeViewer/>
       <input
         className="register-member-input"
         name="fullname"

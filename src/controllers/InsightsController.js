@@ -51,4 +51,25 @@ export const getAttendanceStats = (members, sessions) => {
       membersPresent: session.membersPresent,
     }));
   };
+
+  // NEW: Get insights for Bacentas (e.g., session participation per Bacenta)
+export const getBacentaSessionStats = (bacentas, sessions) => {
+  const bacentaSessions = bacentas.map(bacenta => {
+    const bacentaSessionList = sessions.filter(session => session.bacenta === bacenta.id);
+    return {
+      bacentaName: bacenta.name,
+      leader: bacenta.leader,
+      totalSessions: bacentaSessionList.length,
+      sessions: bacentaSessionList.map(session => ({
+        date: session.date,
+        area: session.area,
+        teacher: session.teacher,
+        topic: session.details,
+        membersPresent: session.membersPresent,
+      }))
+    };
+  });
+
+  return bacentaSessions;
+};
   

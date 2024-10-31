@@ -1,78 +1,115 @@
+/* Main form container */
 .file-upload-form {
-  background-color: #f8f9fa; /* Light background for contrast */
-  border-radius: 8px; /* Rounded corners */
-  padding: 20px; /* Padding around the content */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  max-width: 500px; /* Max width for the form */
-  margin: 20px auto; /* Center the form horizontally */
+  max-width: 450px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
- .file-upload-form h3 {
-  margin-bottom: 20px; /* Space below the heading */
-  font-size: 24px; /* Increase heading font size */
-  text-align: center; /* Center the heading */
+/* Header styling */
+.file-upload-form h3 {
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
+/* Upload type dropdown */
 .file-upload-form .upload-type-form {
-  margin-bottom: 15px; /* Space below the upload type selection */
-  font-size: 16px; /* Adjust font size */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .file-upload-form .upload-type-select {
-  margin-left: 10px; /* Space between label and select */
-  padding: 5px; /* Padding inside the select box */
-  border-radius: 4px; /* Rounded corners */
-  border: 1px solid #ccc; /* Light border */
-  font-size: 16px; /* Font size for better readability */
+  padding: 10px;
+  border-radius: 8px;
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  transition: border 0.3s;
 }
 
+.file-upload-form.upload-type-select:hover {
+  border-color: #666;
+}
+
+/* Form group and labels */
 .file-upload-form .form-group {
-  margin-bottom: 15px; /* Space between form groups */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .file-upload-form .form-group label {
-  display: block; /* Label on a new line */
-  margin-bottom: 5px; /* Space below the label */
-  font-weight: bold; /* Bold label */
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #444;
 }
 
-.file-upload-form .text-input,
-.file-upload-form .file-input,
-.file-upload-form .lyrics-textarea {
-  width: 100%; /* Full width for inputs */
-  max-width: 350px;
-  padding: 10px; /* Padding inside inputs */
-  border-radius: 4px; /* Rounded corners */
-  border: 1px solid #ccc; /* Light border */
-  font-size: 16px; /* Consistent font size */
+/* Input fields */
+.file-upload-form .text-input, .file-upload-form .lyrics-textarea, .file-upload-form .file-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: border 0.3s;
+  background-color: #f9f9f9;
 }
 
+.file-upload-form .text-input:hover, .file-upload-form .lyrics-textarea:hover, .file-upload-form .file-input:hover {
+  border-color: #333;
+}
+
+/* Textarea specifically */
 .file-upload-form .lyrics-textarea {
-  min-height: 100px; /* Minimum height for textarea */
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Status messages */
+.file-upload-form .status-message, .file-upload-form .error-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
 }
 
 .file-upload-form .status-message {
-  color: green; /* Color for success messages */
-  margin-top: 10px; /* Space above message */
+  background-color: #4caf50;
 }
 
 .file-upload-form .error-message {
-  color: red; /* Color for error messages */
-  margin-top: 10px; /* Space above message */
+  background-color: #f44336;
 }
 
+/* Submit button */
 .file-upload-form .upload-button {
-  background-color: #007bff; /* Bootstrap primary color */
-  color: white; /* Text color */
-  padding: 10px 15px; /* Padding inside button */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 16px; /* Consistent font size */
-  width: 100%; /* Full width for button */
-  transition: background-color 0.file-upload-form .3s; /* Smooth transition for hover effect */
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .file-upload-form .upload-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .file-upload-form .file-upload-form {
+    padding: 15px;
+  }
+  .file-upload-form .upload-button {
+    padding: 10px;
+  }
 }

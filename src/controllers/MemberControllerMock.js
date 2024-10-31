@@ -10,6 +10,7 @@ import {
     dbremoveContact
   } from "../services/MemberService";
 import ActivityController from "./ActivityController";
+import { getAllBacentas } from "../services/BacentaService";
   
   // Get all members
   export const getAllMembers = async () => {
@@ -34,7 +35,44 @@ import ActivityController from "./ActivityController";
       console.error("Error fetching members:", error);
       throw new Error("Error fetching members");
     }
-  };
+  };;
+
+  export const getMemberAssignments = async () => {
+    const fetchedBacentas = await getAllBacentas();
+    const allMembers = await getAllMembers();
+  
+    // Find members not assigned to any bacenta
+    const membersNotInBacenta = allMembers?.filter(
+      member => !fetchedBacentas.some(bacenta =>
+        bacenta.members?.some(memberInBacenta => memberInBacenta?.id === member.id)
+      )
+    );
+  
+    // Map the assignments for each bacenta, including unassigned members
+    return fetchedBacentas
+      .sort((a, b) => (b.members?.length || 0) - (a.members?.length || 0))
+      .map(bacenta => ({
+        id: bacenta.id,
+        leader: bacenta.leader,
+        members: bacenta.members || [],
+        count: bacenta.members?.length || 0,
+        unassigned: membersNotInBacenta || []
+      }));
+  };  
+  export const getUnassignedMembers = async () => {
+    const fetchedBacentas = await getAllBacentas();
+    const allMembers = await getAllMembers();
+  
+    // Find members not assigned to any bacenta
+    const membersNotInBacenta = allMembers?.filter(
+      member => !fetchedBacentas.some(bacenta =>
+        bacenta.members?.some(memberInBacenta => memberInBacenta?.id === member.id)
+      )
+    );
+  
+    return membersNotInBacenta || [];
+  };  
+  
   
   // Add a new member
   export const addMember = async (newMember) => {

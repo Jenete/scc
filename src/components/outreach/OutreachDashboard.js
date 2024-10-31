@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles/outreachDashboard.css';
 
-const OutreachDashboard = ({ contacts, updateStatus, removeContact }) => {
+const OutreachDashboard = ({ contacts, removeContact }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchBy, setSearchBy] = useState('name'); // Default search by name
 
@@ -42,8 +42,7 @@ const OutreachDashboard = ({ contacts, updateStatus, removeContact }) => {
                 <th>Name</th>
                 <th><i className="fa fa-phone"></i> Phone</th>
                 <th><i className="fa fa-commenting"></i> Notes</th>
-                <th><i className="fa fa-info-circle"></i> Status</th>
-                <th><i className="fa fa-tasks"></i> Actions: Mark as</th>
+                <th><i className="fa fa-tasks"></i> </th>
               </tr>
             </thead>
             <tbody>
@@ -52,25 +51,12 @@ const OutreachDashboard = ({ contacts, updateStatus, removeContact }) => {
                   <td><i className="fa fa-user"></i> {contact.name}</td>
                   <td><a href={`tel:${contact.phone}`}>{contact.phone}</a></td>
                   <td>{contact.notes}</td>
-                  <td>{contact.status}</td>
                   <td>
-                    <button
-                      className="status-btn"
-                      onClick={() => updateStatus(contact, 'Followed-Up')}
-                    >
-                      <i className="fa fa-check"></i> Followed-Up
-                    </button>
-                    <button
-                      className="status-btn"
-                      onClick={() => updateStatus(contact, 'Joined')}
-                    >
-                      <i className="fa fa-users"></i> Joined
-                    </button>
                     <button
                       className="status-btn"
                       onClick={() => removeContact(contact.id)}
                     >
-                      <i className="fa fa-trash"></i> Remove
+                      <i className="fa fa-trash"></i> 
                     </button>
                   </td>
                 </tr>

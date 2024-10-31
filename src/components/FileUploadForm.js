@@ -83,7 +83,6 @@ const FileUploadForm = () => {
       {showMessage && <MessagePage messageText={messageText} messageType={messageType} />}
       
       <p className="upload-type-form">
-        What are we uploading today:
         <select
           onChange={(e) => setUploadType(e.target.value)}
           className="upload-type-select"
@@ -103,12 +102,12 @@ const FileUploadForm = () => {
           required
           className="text-input"
         />
-      {title?.length> 3 && <ResultsContainer filename={title}/>}
+      {uploadType === uploadTypes.SONG && title?.length> 3 && <ResultsContainer filename={title}/>}
       </div>
 
       {uploadType !== uploadTypes.LINK && (
         <div className="form-group">
-          <label>Upload File (MP3, PDF, etc.)</label>
+          {/* <label>Upload File (MP3, PDF, etc.)</label> */}
           <input
             type="file"
             accept=".pdf,image/*,audio/*"

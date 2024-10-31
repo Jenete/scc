@@ -43,14 +43,6 @@ const OutreachPage = () => {
     }
   };
 
-  const updateStatus = (contact, newStatus) => {
-    setContacts(
-      contacts.map((c) =>
-        c.id === contact.id ? { ...c, status: newStatus } : c
-      )
-    );
-  };
-
   const removeContact = async (contactId) => {
     try {
       setStatusMessage("Loading...");
@@ -85,7 +77,6 @@ const OutreachPage = () => {
       {view === 'dashboard' ? 
         <OutreachDashboard 
           contacts={contacts} 
-          updateStatus={updateStatus} 
           removeContact={removeContact} 
         /> 
         : 
